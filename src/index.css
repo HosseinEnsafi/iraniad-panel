@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-color: "";
+}
+html {
+  direction: rtl;
+}
+body {
+  font-family: "Vazir";
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer components {
+  .hoverAnimation {
+    @apply cursor-pointer  items-center justify-center rounded-full p-2 hover:bg-slate-300 hover:bg-opacity-20;
+  }
+  .input-login {
+    @apply rounded-md border-2 p-2 outline-none  focus:border-slate-400 focus:bg-gray-100;
+  }
+}
+
+@layer base {
+  html {
+    @apply dark:scrollbar-thumb-black;
+  }
+}
+
+.dir-ltr {
+  direction: ltr;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: Vazir;
+  src: url("../../assets/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
