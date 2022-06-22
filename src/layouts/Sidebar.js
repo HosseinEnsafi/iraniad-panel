@@ -1,7 +1,7 @@
 import { BiListUl } from "react-icons/bi";
 import { useContext, useEffect } from "react";
 import { UIContext } from "../context/UIState/UIProvider";
-import Backdrop from "./UI/Backdrop";
+import Backdrop from "../components/UI/Backdrop";
 
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =

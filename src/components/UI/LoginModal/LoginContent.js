@@ -13,50 +13,49 @@ function LoginContent(props) {
   }, []);
 
   return (
-    <div
-      className={`
-       duration-300
-      ${props.active ? "block" : "hidden"} `}
-    >
+    <div className={`${props.active ? "block" : "hidden"} `}>
       <BiX
         onClick={() => setOpenLogin(false)}
-        className=" relative top-[-70px]  h-6 w-6 cursor-pointer rounded-full bg-neutral-900 text-gray-50  "
+        className="h-6 w-6 cursor-pointer rounded-full bg-neutral-900 text-gray-50  "
       />
 
       <h2 className="text-center text-lg">عضویت</h2>
 
       <form
-        className=" mt-8 flex   flex-col items-start gap-5"
+        className="login-form"
         onSubmit={(e) => {
           e.preventDefault();
           props.onLoginHandler(userPhone, userPassword);
         }}
       >
-        <div className="grid w-full  max-w-lg sm:grid-cols-[20fr_80fr]">
-          <label className="self-center">شماره تلفن</label>
+        <div className="login-form__div">
+          <label className="self-center">شماره تلفن:</label>
           <input
             value={userPhone}
             onChange={(e) => {
               setUserPhone(e.target.value);
             }}
-            className="input-login"
+            className="login-form__input"
             type="text"
             ref={phoneRef}
           />
         </div>
-        <div className=" grid  w-full max-w-lg sm:grid-cols-[20fr_80fr]">
-          <label className=" self-center">رمز کاربری </label>
+        <div className="login-form__div">
+          <label className=" self-center">رمز کاربری:</label>
           <input
             value={userPassword}
             onChange={(e) => {
               setUserPassword(e.target.value);
             }}
-            className="input-login"
+            className="login-form__input"
             type="password"
           />
         </div>
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-baseline ">
-          <button className=" roundedrop-shadow-sm mt-2  bg-cyan-400 py-1 px-3 text-white">
+          <button
+            disabled={userPassword.length < 8 || userPhone.length !== 11}
+            className="login-form__btn"
+          >
             ورود
           </button>
           <p className="select-none">

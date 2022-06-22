@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BiListUl, BiUser, BiMoon, BiSun, BiX } from "react-icons/bi";
 import { UIContext } from "../context/UIState/UIProvider";
-import LoginModal from "./UI/LoginModal/LoginModal";
+import LoginModal from "../components/UI/LoginModal/LoginModal";
 
 function Navbar() {
   const {
@@ -56,7 +56,7 @@ function Navbar() {
           onClick={() => setActiveMenu((prevState) => !prevState)}
           className="hoverAnimation h-10 w-10"
         >
-          <BiListUl className="h-full w-full" />
+          <BiListUl className=" h-full w-full " />
         </button>
         <h2>لوگو شرکت</h2>
       </div>

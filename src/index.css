@@ -16,10 +16,25 @@ body {
 
 @layer components {
   .hoverAnimation {
-    @apply cursor-pointer  items-center justify-center rounded-full p-2 hover:bg-slate-300 hover:bg-opacity-20;
+    @apply cursor-pointer  items-center justify-center rounded-full 
+    p-2 hover:bg-slate-300 hover:bg-opacity-20;
   }
-  .input-login {
-    @apply rounded-md border-2 p-2 outline-none  focus:border-slate-400 focus:bg-gray-100;
+  .login-form {
+    @apply mt-8 flex flex-col items-start gap-5;
+  }
+  .login-form__div {
+    @apply grid w-full max-w-lg px-1 sm:grid-cols-[20fr_80fr];
+  }
+  .login-form__input {
+    @apply rounded-md border-2 
+    border-gray-400 p-2 outline-none  
+   focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50;
+  }
+
+  .login-form__btn {
+    @apply mt-2 rounded-sm  bg-cyan-400 py-1 px-3 text-white  
+    shadow-sm disabled:cursor-not-allowed disabled:bg-slate-400 
+    disabled:bg-opacity-50;
   }
 }
 

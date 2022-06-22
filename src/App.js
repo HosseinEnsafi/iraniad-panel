@@ -3,8 +3,8 @@ import { BiShow } from "react-icons/bi";
 import { UIContext } from "./context/UIState/UIProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
+import Sidebar from "./layouts/Sidebar";
+import Navbar from "./layouts/Navbar";
 function App() {
   const { currentTheme, setCurrentTheme } = useContext(UIContext);
 

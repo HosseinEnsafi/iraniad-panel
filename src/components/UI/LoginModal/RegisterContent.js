@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useStaate } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 function RegisterContent(props) {
+
+   
+
   return (
-    <div className={`  duration-200 ${props.active ? "block" : "hidden"}`}>
+    <div className={`duration-200 ${props.active ? "block" : "hidden"}`}>
       <BiRightArrowAlt
         onClick={() => {
           props.onGoToSlide(0);

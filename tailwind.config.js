@@ -12,14 +12,18 @@ module.exports = {
       },
 
       animation: {
-        "scale-up":
-          "animation: scale-up 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
+        scaleUp: "scaleUp 400ms ease-in-out both",
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
 
       keyframes: {
-        "scale-up": {
+        scaleUp: {
           "0%": { transform: "scale(0.5)" },
-          "100%": { transform: "scalse(1)" },
+          "100%": { transform: "scale(1)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
         },
       },
     },

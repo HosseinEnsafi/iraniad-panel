@@ -7,7 +7,7 @@ import RegisterContent from "./RegisterContent";
 
 const ModalOverlay = (props) => {
   return (
-    <div className=" fixed left-[2%] top-[15vh] z-30 w-[96%] rounded-md bg-white p-2 md:left-[calc(50%-16rem)]   md:w-[32rem]">
+    <div className=" fixed left-[2%] top-[15vh] z-30 w-[96%] animate-scaleUp rounded-md bg-white p-2 md:left-[calc(50%-16rem)]   md:w-[32rem]">
       <div className={props.className}>{props.children}</div>
       {/* top-[10vh] left-[5%] z-30 w-[90%] rounded-md bg-gray-50 p-4  dark:bg-neutral-800 md:left-[calc(50%-16rem)] md:w-[32rem] */}
     </div>
