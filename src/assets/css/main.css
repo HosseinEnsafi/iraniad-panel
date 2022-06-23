@@ -623,8 +623,8 @@ video {
   border-radius: 0.125rem;
   --tw-bg-opacity: 1;
   background-color: rgb(34 211 238 / var(--tw-bg-opacity));
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   --tw-text-opacity: 1;
@@ -638,6 +638,20 @@ video {
   cursor: not-allowed;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
   --tw-bg-opacity: 0.5;
+}
+
+.error-bx {
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.6;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.error-bx__message {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .fixed {
@@ -662,14 +676,6 @@ video {
 
 .top-\[15vh\] {
   top: 15vh;
-}
-
-.top-\[10vh\] {
-  top: 10vh;
-}
-
-.left-\[5\%\] {
-  left: 5%;
 }
 
 .z-10 {
@@ -738,10 +744,6 @@ video {
 
 .w-\[96\%\] {
   width: 96%;
-}
-
-.w-\[90\%\] {
-  width: 90%;
 }
 
 .flex-grow {
@@ -881,10 +883,6 @@ video {
 
 .p-2 {
   padding: 0.5rem;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .py-2 {
@@ -1052,6 +1050,14 @@ body {
 }
 
 @media (min-width: 640px) {
+  .sm\:left-\[calc\(50\%-16rem\)\] {
+    left: calc(50% - 16rem);
+  }
+
+  .sm\:w-\[32rem\] {
+    width: 32rem;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1062,10 +1068,6 @@ body {
 }
 
 @media (min-width: 768px) {
-  .md\:left-\[calc\(50\%-16rem\)\] {
-    left: calc(50% - 16rem);
-  }
-
   .md\:z-10 {
     z-index: 10;
   }
@@ -1076,9 +1078,5 @@ body {
 
   .md\:hidden {
     display: none;
-  }
-
-  .md\:w-\[32rem\] {
-    width: 32rem;
   }
 }
