@@ -2,6 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/css/main.css";
 import App from "./App";
-document.title = "login";
+import UIProvider from "./context/UIState/UIProvider";
+document.title = "پنل مدیریت";
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(
+  <UIProvider>
+    <App />
+  </UIProvider>,
+  document.querySelector("#root")
+);
