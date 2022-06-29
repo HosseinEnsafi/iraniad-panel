@@ -1,7 +1,7 @@
 import React from "react";
 import SwitchToggle from "../components/SwitchToggle";
 function Dashboard() {
-  return <div className=" mr-[400px]">{/* <SwitchToggle /> */}</div>;
+  return <div className="">داشبورد</div>;
 }
 
 export default Dashboard;

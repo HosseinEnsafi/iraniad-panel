@@ -1,6 +1,6 @@
 import { BiListUl } from "react-icons/bi";
 import { useContext, useEffect } from "react";
-import { UIContext } from "../context/UIState/UIProvider";
+import { UIContext } from "../context/UIState/UIContext";
 import Backdrop from "../components/UI/Backdrop";
 
 function Sidebar(props) {
@@ -39,14 +39,12 @@ function Sidebar(props) {
           screenSize < 900 ? "z-10 duration-300" : ""
         } dark:bg-[#3d3d3d]  md:mt-12  ${
           activeMenu ? "translate-x-0" : "translate-x-60"
-        }`}
-      >
+        }`}>
         {/* <!--===== TOP =====--> */}
         <div className="flex gap-2 md:hidden">
           <button
             onClick={() => setActiveMenu(false)}
-            className="hoverAnimation h-10 w-10"
-          >
+            className="hoverAnimation h-10 w-10">
             <BiListUl className="h-full w-full" />
           </button>
           <div className="flex items-center justify-center">

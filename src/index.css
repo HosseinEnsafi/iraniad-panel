@@ -32,9 +32,16 @@ body {
   }
 
   .login-form__btn {
-    @apply mt-2 rounded-sm  bg-cyan-400 py-1 px-3 text-white  
+    @apply mt-2 rounded-sm  bg-cyan-400 py-2 px-3 text-white  
     shadow-sm disabled:cursor-not-allowed disabled:bg-slate-400 
     disabled:bg-opacity-50;
+  }
+
+  .error-bx {
+    @apply mt-2 rounded-md bg-red-500 bg-opacity-60 p-2 text-center;
+  }
+  .error-bx__message {
+    @apply text-white;
   }
 }
 
