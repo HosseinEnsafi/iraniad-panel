@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { UIContext } from "./UIContext";
 
-export const UIContext = createContext();
+
 
 const UIProvider = (props) => {
   const [currentTheme, setCurrentTheme] = useState("Light");

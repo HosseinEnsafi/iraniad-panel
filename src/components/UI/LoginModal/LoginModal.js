@@ -1,6 +1,7 @@
 import { Fragment, useState, useContext } from "react";
 import ReactDOM from "react-dom";
-import { UIContext } from "../../../context/UIState/UIProvider";
+import { useSelector } from "react-redux";
+import { UIContext } from "../../../context/UIState/UIContext";
 import Backdrop from "../Backdrop";
 import LoginContent from "./LoginContent";
 import RegisterContent from "./RegisterContent";
@@ -17,8 +18,8 @@ const portalElement = document.getElementById("overlays");
 
 const LoginModal = (props) => {
   const { setOpenLogin } = useContext(UIContext);
+  const { user } = useSelector((state) => state.auth);
   const [curSlide, setCurSlide] = useState(0);
-  const [success, setSuccess] = useState(false);
   const goToSlideHandler = (slide) => {
     setCurSlide(slide);
   };
@@ -31,18 +32,17 @@ const LoginModal = (props) => {
       )}
       {ReactDOM.createPortal(
         <ModalOverlay className="relative overflow-hidden">
-          {success ? (
-            <p>
-              با موفقیت وارد شدید
-              {/* <p>{data.data.firstName}</p> 
-               <p>{data.data.lastName}</p>  */}
-            </p>
+          {user ? (
+            <>
+              <p>با موفقیت وارد شدید</p>
+              <p>{user.firstName}</p>
+              <p>{user.lastName}</p>
+            </>
           ) : (
             <>
               <LoginContent
                 active={curSlide === 0}
                 onGoToSlide={goToSlideHandler}
-                onSuccessHandler={setSuccess}
               />
               <RegisterContent
                 active={curSlide === 1}

@@ -1,43 +1,20 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { BiX } from "react-icons/bi";
-import { UIContext } from "../../../context/UIState/UIProvider";
-import axios from "../../../api/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { UIContext } from "../../../context/UIState/UIContext";
+import { clearError, loginUser } from "../../../redux/auth/authActions";
 
 function LoginContent(props) {
-  const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+
   const [userPhone, setUserPhone] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const { setOpenLogin } = useContext(UIContext);
   const phoneRef = useRef();
 
   const loginUserHandler = () => {
-    setLoading(true);
-
-    axios
-      .post(
-        "/login",
-        {
-          phone: userPhone,
-          password: userPassword,
-          domain: "https://shahin.iraniad.com",
-        },
-        { headers: { "Content-type": "application/json" } }
-      )
-      .then((res) => {
-        console.log(res);
-        props.onSuccessHandler(true);
-      })
-      .catch((err) => {
-        switch (err.response.status) {
-          case 401:
-            return setErrorMsg("شماره تلفن و یا نام کاربری اشتباه است  ");
-
-          default:
-            return setErrorMsg("مشکلی رخ داده لطفا با پشتیبانی در تماس باشید");
-        }
-      })
-      .finally(() => setLoading(false));
+    dispatch(loginUser(userPhone, userPassword));
   };
 
   useEffect(() => {
@@ -45,7 +22,7 @@ function LoginContent(props) {
   }, []);
 
   useEffect(() => {
-    setErrorMsg("");
+    if (error) dispatch(clearError());
   }, [userPhone, userPassword]);
 
   return (
@@ -57,22 +34,18 @@ function LoginContent(props) {
 
       <h2 className="text-center text-lg">عضویت</h2>
 
-      {errorMsg ? (
+      {error && (
         <div className="error-bx">
-          <p className="error-bx__message">{errorMsg}</p>
+          <p className="error-bx__message">{error}</p>
         </div>
-      ) : (
-        ""
       )}
-
       <form
         className="login-form"
         onSubmit={(e) => {
           e.preventDefault();
           if (loading) return;
           loginUserHandler();
-        }}
-      >
+        }}>
         <div className="login-form__div">
           <label className="self-center">شماره تلفن:</label>
           <input
@@ -99,16 +72,14 @@ function LoginContent(props) {
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-baseline ">
           <button
             disabled={userPassword.length < 8 || userPhone.length !== 11}
-            className="login-form__btn"
-          >
+            className="login-form__btn">
             {loading ? "در حال بررسی ..." : "ورود"}
           </button>
           <p className="select-none">
             نام کاربری ندارید؟{" "}
             <span
               onClick={() => props.onGoToSlide(1)}
-              className="cursor-pointer text-blue-400"
-            >
+              className="cursor-pointer text-blue-400">
               {" "}
               ثبت نام کنید
             </span>

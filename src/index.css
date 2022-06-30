@@ -55,6 +55,27 @@ body {
   direction: ltr;
 }
 
+html::-webkit-scrollbar {
+  width: 12px;
+  height: 14px;
+}
+
+html::-webkit-scrollbar-track {
+  border-radius: 100vh;
+
+  background: #f7f4ed;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e0cbcb;
+  border-radius: 100vh;
+  border: 3px solid #f6f7ed;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #755f69;
+}
+
 @font-face {
   font-family: Vazir;
   src: url("../../assets/fonts/Vazirmatn-Thin.woff2") format("woff2");
