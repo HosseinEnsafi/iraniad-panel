@@ -39,10 +39,29 @@ export const loginUserRequest = () => {
   };
 };
 
-export const loginUserSuccess = (data) => {
+export const loginUserSuccess = (user) => {
+  const {
+    firstName,
+    lastName,
+    api_token,
+    avatar,
+    wallet,
+    role,
+    status,
+    verify,
+  } = user;
   return {
     type: LOGIN_USER_SUCCESS,
-    payload: data,
+    payload: {
+      firstName,
+      lastName,
+      api_token,
+      avatar,
+      wallet,
+      role,
+      status,
+      verify,
+    },
   };
 };
 
