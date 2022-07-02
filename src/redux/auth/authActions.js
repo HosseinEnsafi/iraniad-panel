@@ -21,10 +21,22 @@ export const loginUser = (phone, password) => {
         { headers: { "Content-type": "application/json" } }
       )
       .then((res) => {
+<<<<<<< HEAD
         // console.log(res);
         const user = res.data.data;
         window.localStorage.setItem("user", JSON.stringify(user));
         dispatch(loginUserSuccess(user));
+=======
+        const user = res.data.data;
+        //prettier-ignore
+        const {firstName,lastName,api_token,awatar,wallet,role,status,verify} = user;
+        //prettier-ignore
+        const userData = {name: `${firstName} ${lastName}`,
+        api_token,awatar,wallet,role,status,verify,};
+
+        window.localStorage.setItem("user", JSON.stringify(userData));
+        dispatch(loginUserSuccess(userData));
+>>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
       })
       .catch((err) => {
         dispatch(loginUserFailure(err.response.status));
@@ -39,6 +51,7 @@ export const loginUserRequest = () => {
   };
 };
 
+<<<<<<< HEAD
 export const loginUserSuccess = (user) => {
   const {
     firstName,
@@ -62,6 +75,12 @@ export const loginUserSuccess = (user) => {
       status,
       verify,
     },
+=======
+export const loginUserSuccess = (data) => {
+  return {
+    type: LOGIN_USER_SUCCESS,
+    payload: data,
+>>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
   };
 };
 

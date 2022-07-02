@@ -28,5 +28,9 @@ module.exports = {
       },
     },
   },
+<<<<<<< HEAD
   plugins: [require("tailwind-scrollbar")],
+=======
+  plugins: [require("tailwind-scrollbar"),require('prettier-plugin-tailwindcss')],
+>>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
 };
