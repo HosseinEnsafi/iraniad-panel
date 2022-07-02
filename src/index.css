@@ -55,8 +55,6 @@ body {
   direction: ltr;
 }
 
-<<<<<<< HEAD
-=======
 html::-webkit-scrollbar {
   width: 12px;
   height: 14px;
@@ -78,7 +76,6 @@ html::-webkit-scrollbar-thumb:hover {
   background: #755f69;
 }
 
->>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
 @font-face {
   font-family: Vazir;
   src: url("../../assets/fonts/Vazirmatn-Thin.woff2") format("woff2");

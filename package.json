@@ -11,20 +11,13 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "recoil": "^0.7.4",
-=======
->>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1"
   },
   "scripts": {
     "tailwind:watch": "npx tailwindcss -i ./src/index.css -o ./src/assets/css/main.css --watch",
-<<<<<<< HEAD
-=======
     "tailwind:product": "npx tailwindcss -i ./src/index.css -o ./src/assets/css/final.css --minify",
->>>>>>> 92ccbb6e9300ec7668d7f1ac4e89c7764a318552
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -19,6 +19,7 @@ export const sidebarData = [
       {
         title: "ایتم اول-اول",
         icon: <BiBulb />,
+        subs:["گزینه اول","گزینه دوم","گزینه سوم"]
       },
       {
         title: "ایتم اول-دوم",
