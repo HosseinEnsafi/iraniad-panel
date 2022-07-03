@@ -1,19 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-
-import Layout from "./layouts/Admin";
-import Profile from "./pages/Profile";
+import AdminLayout from "./layouts/Admin";
+import UserLayout from "./layouts/User";
 
 function App() {
   return (
-    <div className="">
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="profile" element={<Profile />} />
-        </Routes>
-      </Layout>
-    </div>
+    <>
+      <Routes>
+        <Route path="/*" element={<UserLayout />} />
+        <Route path="admin/*" element={<AdminLayout />} />
+        <Route path="*" element={<div>Error 404</div>} />
+      </Routes>
+    </>
   );
 }
 

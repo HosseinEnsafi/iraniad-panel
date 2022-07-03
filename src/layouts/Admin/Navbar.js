@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BiListUl, BiUser, BiMoon, BiSun } from "react-icons/bi";
+import { BiListUl, BiUser, BiMoon, BiSun, BiGridAlt } from "react-icons/bi";
 import { UIContext } from "../../context/UIState/UIContext";
 import LoginModal from "../../components/UI/LoginModal/LoginModal";
 import { useSelector } from "react-redux";
@@ -34,7 +34,7 @@ function Navbar() {
           onClick={() => setActiveMenu((prevState) => !prevState)}
           className="hoverAnimation h-10 w-10"
         >
-          <BiListUl className="h-full w-full" />
+          <BiGridAlt className="h-full w-full" />
         </button>
         <h2>لوگو شرکت</h2>
       </div>

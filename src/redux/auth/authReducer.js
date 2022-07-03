@@ -6,6 +6,7 @@ import {
   LOGOUT_USER,
 } from "./authTypes";
 
+
 const initialState = {
   loading: false,
   user: JSON.parse(localStorage.getItem("user")) || null,

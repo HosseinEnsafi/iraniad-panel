@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { UIContext } from "../../context/UIState/UIContext";
 import Backdrop from "../../components/UI/Backdrop";
 import SidebarList from "../../components/SidebarList";
-import { sidebarData } from "../../assets/data";
+import { sidebarAdminData } from "../../assets/data";
 import { IconContext } from "react-icons/lib";
 
 function Sidebar(props) {
@@ -55,7 +55,7 @@ function Sidebar(props) {
         {/* <!--===== MAIN =====--> */}
         <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
           <IconContext.Provider value={{ size: "22px" }}>
-            <SidebarList items={sidebarData} />
+            <SidebarList items={sidebarAdminData} />
           </IconContext.Provider>
         </div>
       </aside>

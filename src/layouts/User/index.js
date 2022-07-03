@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from "react";
+import MainLayout from "../index";
 import { UIContext } from "../../context/UIState/UIContext";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { Route, Routes } from "react-router-dom";
+import Support from "../../pages/user/Support";
+import Landing from "../../pages/user/Landing";
 function Layout({ children }) {
-  const { currentTheme, setCurrentTheme, screenSize, activeMenu } =
-    useContext(UIContext);
+  const { setCurrentTheme, screenSize, activeMenu } = useContext(UIContext);
 
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("theme");
@@ -12,20 +15,21 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div className={`${currentTheme === "Dark" ? "dark" : ""} `}>
-      <div className=" text-neutral-800 dark:bg-neutral-800 dark:text-slate-50">
-        <Navbar />
-        <Sidebar />
-
-        <main
-          className={`min-h-screen  mx-auto${
-            screenSize > 900 && activeMenu ? " mr-[270px]" : "mr-0"
-          } max-w-7xl flex-grow bg-white px-5 pt-16 dark:bg-neutral-800 md:px-8 `}
-        >
-          {children}
-        </main>
-      </div>
-    </div>
+    <MainLayout>
+      <Navbar />
+      <Sidebar />
+      <main
+        className={`min-h-screen  mx-auto${
+          screenSize > 900 && activeMenu ? " mr-[270px]" : "mr-0"
+        } max-w-7xl flex-grow bg-white px-5 pt-16 dark:bg-neutral-800 md:px-8 `}
+      >
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="support" element={<Support />} />
+          <Route path="*" element={<div>Error 404</div>} />
+        </Routes>
+      </main>
+    </MainLayout>
   );
 }
 

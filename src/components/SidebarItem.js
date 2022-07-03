@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 const SidebarSubItem = ({ subItem, subItemSubs }) => {
-  const [openSubItemSubs, setopenSubItemSubs] = useState(false);
+  const [openSubItemSubs, setOpenSubItemSubs] = useState(false);
   return (
-    <li className="px-4">
+    <li className="px-4 tracking-tight text-gray-600 dark:text-gray-200">
       <div
-        onClick={() => setopenSubItemSubs((prevState) => !prevState)}
+        onClick={() => setOpenSubItemSubs((prevState) => !prevState)}
         className={`flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400 ${
           openSubItemSubs && subItemSubs
             ? "  pb-2 text-red-500 dark:text-red-400"
@@ -35,7 +35,9 @@ function SidebarItem({ item }) {
   const { icon, title, subItems } = item;
 
   return (
-    <li className={`cursor-pointer  select-none`}>
+    <li
+      className={`cursor-pointer select-none tracking-tight  text-gray-500 dark:text-gray-200`}
+    >
       <div
         onClick={() => setOpenSubItems((prevState) => !prevState)}
         className={`flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400 ${

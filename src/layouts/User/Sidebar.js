@@ -2,12 +2,13 @@ import { useContext, useEffect } from "react";
 import { UIContext } from "../../context/UIState/UIContext";
 import Backdrop from "../../components/UI/Backdrop";
 import SidebarList from "../../components/SidebarList";
-import { sidebarData } from "../../assets/data";
+import { sidebarUserData } from "../../assets/data";
 import { IconContext } from "react-icons/lib";
 
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
     useContext(UIContext);
+  const [userDataTop, userDataBottom] = sidebarUserData;
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -21,7 +22,7 @@ function Sidebar(props) {
 
   useEffect(() => {
     if (screenSize >= "900") setActiveMenu(true);
-  }, [screenSize, setActiveMenu]);
+  }, [screenSize]);
 
   return (
     <>
@@ -41,23 +42,27 @@ function Sidebar(props) {
         }`}
       >
         {/* <!--===== TOP =====--> */}
-        <div
-          className={`flex h-10 gap-2  px-3${
+
+        <h2
+          className={` select-none items-center  justify-center  py-2 pr-8 ${
             screenSize > 900
               ? " hidden"
               : " border-b-[0.5px] border-b-gray-400 border-opacity-20"
           }`}
         >
-          <h2 className="flex select-none items-center justify-center">
-            لوگو شرکت
-          </h2>
-        </div>
+          لوگو شرکت
+        </h2>
+
         {/* <!--===== MAIN =====--> */}
-        <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
-          <IconContext.Provider value={{ size: "22px" }}>
-            <SidebarList items={sidebarData} />
-          </IconContext.Provider>
-        </div>
+        <IconContext.Provider value={{ size: "22px" }}>
+          <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
+            <SidebarList items={userDataTop} />
+          </div>
+          <div className={` mt-10`}>
+            <h1 className="mb-4 px-6 text-lg">سرویس ها</h1>
+            <SidebarList items={userDataBottom} />
+          </div>
+        </IconContext.Provider>
       </aside>
     </>
   );
