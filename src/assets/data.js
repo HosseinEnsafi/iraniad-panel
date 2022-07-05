@@ -6,11 +6,19 @@ import { IoPricetagOutline, IoTicketOutline } from "react-icons/io5";
 
 export const sidebarUserData = [
   [
-    { title: "پر فروش ترین ها", icon: <BiBroadcast /> },
-    { title: "تخفیف ها و پیشنهاد ها", icon: <TbDiscount2 /> },
-    { title: "فروشنده شوید", icon: <TbDiscount2 /> },
-    { title: "پیشنهاد شگفت انگیز", icon: <AiOutlineFire /> },
-    { title: "پشتیبانی", icon: <BiSupport /> },
+    { title: "پر فروش ترین ها", icon: <BiBroadcast />, to: "best-sellers" },
+    {
+      title: "تخفیف ها و پیشنهاد ها",
+      icon: <TbDiscount2 />,
+      to: "amazing-suggestion",
+    },
+    { title: "فروشنده شوید", icon: <TbDiscount2 />, to: "be-seller" },
+    {
+      title: "پیشنهاد شگفت انگیز",
+      icon: <AiOutlineFire />,
+      to: "amazing-suggestion",
+    },
+    { title: "پشتیبانی", icon: <BiSupport />, to: "support" },
   ],
   [
     {
@@ -56,8 +64,17 @@ export const sidebarAdminData = [
   {
     title: "لیست سفارشات",
     icon: <BsListUl className=" rotate-180" />,
+    to: "/admin/users-list",
   },
-  { title: "قیمت دهی محصولات", icon: <IoPricetagOutline /> },
-  { title: "پاسخ به تیکت ها", icon: <IoTicketOutline /> },
-  { title: "تسویه حساب", icon: <BiCreditCard /> },
+  {
+    title: "قیمت دهی محصولات",
+    icon: <IoPricetagOutline />,
+    to: "/admin/pricing-products",
+  },
+  {
+    title: "پاسخ به تیکت ها",
+    icon: <IoTicketOutline />,
+    to: "/admin/answering-tickets",
+  },
+  { title: "تسویه حساب", icon: <BiCreditCard />, to: "/admin/checkout" },
 ];

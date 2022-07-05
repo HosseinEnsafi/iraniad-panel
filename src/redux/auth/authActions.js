@@ -1,10 +1,10 @@
 import axios from "../../api/axios";
 import {
   CLEAR_ERROR,
-  LOGIN_USER_DONE,
   LOGIN_USER_FAILURE,
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
+  LOGOUT_USER,
 } from "./authTypes";
 
 export const loginUser = (phone, password) => {
@@ -72,5 +72,11 @@ export const loginUserFailure = (status) => {
 export const clearError = () => {
   return {
     type: CLEAR_ERROR,
+  };
+};
+
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER,
   };
 };

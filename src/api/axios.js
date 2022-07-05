@@ -1,25 +1,32 @@
 import Axios from "axios";
+import ErrorHandler from "./ErrorHandler";
+import store from "../redux/store";
 
+const user = store.getState().auth.user;
 const axios = Axios.create({
   baseURL: "https://api.iraniad.com/representation",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + (user ? user.api_token : null),
+  },
 });
 
-Axios.interceptors.request.use(
+axios.interceptors.request.use(
   (request) => {
     return request;
   },
   (error) => {
-    console.log(error);
     return Promise.reject(error);
   }
 );
 
-Axios.interceptors.response.use(
+axios.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
-    console.log(error);
+    const errorHandle = new ErrorHandler();
+    errorHandle.setError(error.response).handle();
     return Promise.reject(error);
   }
 );

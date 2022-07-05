@@ -1,7 +1,7 @@
-import { Fragment, useState, useContext } from "react";
-import ReactDOM from "react-dom";
-import { useSelector } from "react-redux";
-import { UIContext } from "../../../context/UIState/UIContext";
+import { Fragment, useState } from "react";
+import { createPortal } from "react-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { closeLogin } from "../../../redux";
 import Backdrop from "../Backdrop";
 import LoginContent from "./LoginContent";
 import RegisterContent from "./RegisterContent";
@@ -17,7 +17,7 @@ const ModalOverlay = (props) => {
 const portalElement = document.getElementById("overlays");
 
 const LoginModal = (props) => {
-  const { setOpenLogin } = useContext(UIContext);
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [curSlide, setCurSlide] = useState(0);
   const goToSlideHandler = (slide) => {
@@ -26,11 +26,11 @@ const LoginModal = (props) => {
 
   return (
     <Fragment>
-      {ReactDOM.createPortal(
-        <Backdrop onClick={() => setOpenLogin(false)} />,
+      {createPortal(
+        <Backdrop onClick={() => dispatch(closeLogin())} />,
         portalElement
       )}
-      {ReactDOM.createPortal(
+      {createPortal(
         <ModalOverlay className="relative overflow-hidden">
           {user ? (
             <>

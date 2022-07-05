@@ -6,7 +6,6 @@ import {
   LOGOUT_USER,
 } from "./authTypes";
 
-
 const initialState = {
   loading: false,
   user: JSON.parse(localStorage.getItem("user")) || null,
@@ -40,7 +39,9 @@ export default function authReducer(state = initialState, { type, payload }) {
       };
     case LOGOUT_USER:
       return {
-        ...state,
+        user: null,
+        loading: null,
+        error: null,
       };
 
     default:

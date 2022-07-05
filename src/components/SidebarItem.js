@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const SidebarSubItem = ({ subItem, subItemSubs }) => {
   const [openSubItemSubs, setOpenSubItemSubs] = useState(false);
@@ -32,13 +33,14 @@ const SidebarSubItem = ({ subItem, subItemSubs }) => {
 
 function SidebarItem({ item }) {
   const [openSubItems, setOpenSubItems] = useState(false);
-  const { icon, title, subItems } = item;
+  const { icon, title, subItems, to = "/" } = item;
 
   return (
     <li
       className={`cursor-pointer select-none tracking-tight  text-gray-500 dark:text-gray-200`}
     >
-      <div
+      <Link
+        to={to}
         onClick={() => setOpenSubItems((prevState) => !prevState)}
         className={`flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400 ${
           openSubItems && subItems
@@ -54,7 +56,7 @@ function SidebarItem({ item }) {
         {subItems && (
           <span>{openSubItems ? <BiChevronDown /> : <BiChevronUp />}</span>
         )}
-      </div>
+      </Link>
 
       {openSubItems && subItems && (
         <ul className=" space-y-4 bg-zinc-200 py-2 dark:bg-neutral-500">

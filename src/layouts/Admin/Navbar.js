@@ -1,20 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BiListUl, BiUser, BiMoon, BiSun, BiGridAlt } from "react-icons/bi";
+import { BiUser, BiMoon, BiSun, BiGridAlt } from "react-icons/bi";
 import { UIContext } from "../../context/UIState/UIContext";
 import LoginModal from "../../components/UI/LoginModal/LoginModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import UserProfile from "../../components/UI/UserProfile";
+import { openLogin } from "../../redux";
 
 function Navbar() {
-  const {
-    currentTheme,
-    openLogin,
-    setOpenLogin,
-    setCurrentTheme,
-    setActiveMenu,
-  } = useContext(UIContext);
-
+  const { currentTheme, setCurrentTheme, setActiveMenu } =
+    useContext(UIContext);
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const { isLoginOpen } = useSelector((state) => state.ui);
 
   const [initialLoad, setInitialLoad] = useState(true);
 
@@ -52,7 +49,7 @@ function Navbar() {
         {!user ? (
           <div className="hoverAnimation flex h-10 w-10 items-center text-gray-500">
             <BiUser
-              onClick={() => setOpenLogin((prevState) => !prevState)}
+              onClick={() => dispatch(openLogin())}
               className="h-full w-full"
             />
           </div>
@@ -61,7 +58,7 @@ function Navbar() {
         )}
       </div>
 
-      {openLogin && !user && <LoginModal />}
+      {isLoginOpen  && <LoginModal />}
     </header>
   );
 }

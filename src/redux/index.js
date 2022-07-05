@@ -1,9 +1,2 @@
-
-export {
-  toggleModal,
-  toggleSidebar,
-  changeTheme,
-  resizeScreen,
-} from "./UI/UIActions";
-
-
+export { loginUser, clearError, logoutUser } from "./auth/authActions";
+export { openLogin, closeLogin } from "./UI/UIActions";
