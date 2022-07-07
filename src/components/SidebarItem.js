@@ -9,7 +9,7 @@ const SidebarSubItem = ({ subItem, subItemSubs }) => {
       <div
         onClick={() => setOpenSubItemSubs((prevState) => !prevState)}
         className={`flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400 ${
-          openSubItemSubs && subItemSubs
+          openSubItemSubs && subItemSubs.length > 0
             ? "  pb-2 text-red-500 dark:text-red-400"
             : ""
         }`}
@@ -20,7 +20,7 @@ const SidebarSubItem = ({ subItem, subItemSubs }) => {
           <span>{openSubItemSubs ? <BiChevronDown /> : <BiChevronUp />}</span>
         )}
       </div>
-      {openSubItemSubs && subItemSubs && (
+      {openSubItemSubs && subItemSubs.length > 0 && (
         <ul className="px-6 pt-1">
           {subItemSubs.map((subItmSub) => (
             <li key={subItmSub.id} className="py-1">
@@ -55,7 +55,7 @@ function SidebarItem({ item }) {
           <p>{name}</p>
         </div>
 
-        {subItems && (
+        {subItems.length > 0 && (
           <span>{openSubItems ? <BiChevronDown /> : <BiChevronUp />}</span>
         )}
       </Link>
