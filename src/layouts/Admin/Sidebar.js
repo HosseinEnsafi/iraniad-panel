@@ -11,18 +11,7 @@ function Sidebar(props) {
 
   const [sidebarData, setSidebarData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("/categories", {
-        params: {
-          flag: "nested",
-        },
-      })
-      .then((data) => {
-        console.log(data.data.data);
-        setSidebarData(data.data.data);
-      });
-  }, []);
+  
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);

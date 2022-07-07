@@ -5,6 +5,7 @@ import LoginModal from "../../components/UI/LoginModal/LoginModal";
 import { useDispatch, useSelector } from "react-redux";
 import UserProfile from "../../components/UI/UserProfile";
 import { openLogin } from "../../redux";
+import axios from "../../api/axios";
 function Navbar() {
   const { currentTheme, setCurrentTheme, setActiveMenu } =
     useContext(UIContext);
@@ -12,7 +13,11 @@ function Navbar() {
   const { user } = useSelector((state) => state.auth);
   const { isLoginOpen } = useSelector((state) => state.ui);
   const [initialLoad, setInitialLoad] = useState(true);
+ 
   const dispatch = useDispatch();
+
+ 
+
   useEffect(() => {
     if (initialLoad) {
       setInitialLoad(false);

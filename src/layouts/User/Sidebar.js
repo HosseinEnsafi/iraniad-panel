@@ -1,14 +1,28 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UIContext } from "../../context/UIState/UIContext";
 import Backdrop from "../../components/UI/Backdrop";
 import SidebarList from "../../components/SidebarList";
 import { sidebarUserData } from "../../assets/data";
 import { IconContext } from "react-icons/lib";
+import axios from "../../api/axios";
 
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
     useContext(UIContext);
   const [userDataTop, userDataBottom] = sidebarUserData;
+  const [sidebarData, setSidebarData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/categories", {
+        params: {
+          flag: "nested",
+        },
+      })
+      .then((data) => {
+        console.log(data.data.data);
+        setSidebarData(data.data.data);
+      });
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -60,7 +74,7 @@ function Sidebar(props) {
           </div>
           <div className={` mt-10`}>
             <h1 className="mb-4 px-6 text-lg">سرویس ها</h1>
-            <SidebarList items={null} />
+            <SidebarList items={sidebarData} />
           </div>
         </IconContext.Provider>
       </aside>
