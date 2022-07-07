@@ -56,11 +56,11 @@ function Sidebar(props) {
         {/* <!--===== MAIN =====--> */}
         <IconContext.Provider value={{ size: "22px" }}>
           <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
-            <SidebarList items={userDataTop} />
+            <SidebarList items={null} />
           </div>
           <div className={` mt-10`}>
             <h1 className="mb-4 px-6 text-lg">سرویس ها</h1>
-            <SidebarList items={userDataBottom} />
+            <SidebarList items={null} />
           </div>
         </IconContext.Provider>
       </aside>

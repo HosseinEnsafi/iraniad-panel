@@ -14,16 +14,18 @@ const SidebarSubItem = ({ subItem, subItemSubs }) => {
             : ""
         }`}
       >
-        <p>{subItem.title}</p>
+        <p>{subItem.name}</p>
 
-        {subItemSubs && (
+        {subItemSubs.length > 0 && (
           <span>{openSubItemSubs ? <BiChevronDown /> : <BiChevronUp />}</span>
         )}
       </div>
       {openSubItemSubs && subItemSubs && (
-        <ul className="px-6 pt-2">
+        <ul className="px-6 pt-1">
           {subItemSubs.map((subItmSub) => (
-            <li className="py-1">{subItmSub}</li>
+            <li key={subItmSub.id} className="py-1">
+              {subItmSub.name}
+            </li>
           ))}
         </ul>
       )}
@@ -33,14 +35,14 @@ const SidebarSubItem = ({ subItem, subItemSubs }) => {
 
 function SidebarItem({ item }) {
   const [openSubItems, setOpenSubItems] = useState(false);
-  const { icon, title, subItems, to = "/" } = item;
+  const { icon, name, subCategories: subItems, to = "/" } = item;
 
   return (
     <li
       className={`cursor-pointer select-none tracking-tight  text-gray-500 dark:text-gray-200`}
     >
       <Link
-        to={to}
+        to={window.location.pathname}
         onClick={() => setOpenSubItems((prevState) => !prevState)}
         className={`flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400 ${
           openSubItems && subItems
@@ -50,7 +52,7 @@ function SidebarItem({ item }) {
       >
         <div className="flex gap-4">
           <span className="self-center">{icon}</span>
-          <p>{title}</p>
+          <p>{name}</p>
         </div>
 
         {subItems && (
@@ -65,7 +67,7 @@ function SidebarItem({ item }) {
               <SidebarSubItem
                 key={i}
                 subItem={subItem}
-                subItemSubs={subItem?.subs}
+                subItemSubs={subItem?.subCategories}
               />
             ))}
         </ul>

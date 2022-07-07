@@ -7,12 +7,14 @@ const axios = Axios.create({
   baseURL: "https://api.iraniad.com/representation",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer " + (user ? user.api_token : null),
+    // Authorization: "Bearer " + (user ? user.api_token : null),
   },
 });
 
 axios.interceptors.request.use(
   (request) => {
+    const token = "Bearer " + user?.api_token;
+    request.headers.Authorization = token;
     return request;
   },
   (error) => {

@@ -17,7 +17,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 function Layout({ children }) {
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+
   const { setCurrentTheme, screenSize, activeMenu } = useContext(UIContext);
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("theme");
@@ -35,7 +35,9 @@ function Layout({ children }) {
       >
         <Routes>
           <Route
-            element={<ProtectedRoute isAllowed={user.role.includes("OWNER")} />}
+            element={
+              <ProtectedRoute isAllowed={user?.role.includes("OWNER")} />
+            }
           >
             <Route element={<Dashboard />} path="/" />
             <Route element={<Dashboard />} path="dashboard" />
