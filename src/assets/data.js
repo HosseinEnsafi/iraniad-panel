@@ -78,3 +78,34 @@ export const sidebarAdminData = [
   },
   { title: "تسویه حساب", icon: <BiCreditCard />, to: "/admin/checkout" },
 ];
+
+export const productsData = [
+  {
+    category_id: 58,
+    name: "ممبر اجباری گروه تلگرام",
+    label: "کم ریزش",
+    period: [
+      { start: "1", end: "4999", price: 700 },
+      {
+        start: "5000",
+        end: "9999",
+        price: 650,
+      },
+      {
+        start: "10000",
+        end: "19999",
+        price: 600,
+      },
+      {
+        start: "20000",
+        end: "49999",
+        price: 550,
+      },
+      {
+        start: "50000",
+        end: "100000",
+        price: 500,
+      },
+    ],
+  },
+];

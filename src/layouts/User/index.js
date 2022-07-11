@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import MainLayout from "../index";
+import MainLayout from "./MainLayout";
 import { UIContext } from "../../context/UIState/UIContext";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -12,25 +12,23 @@ import DiscountsAndSuggestion from "../../pages/user/DiscountsAndSuggestion";
 import BeSeller from "../../pages/user/BeSeller";
 import AmazingSuggestion from "../../pages/user/AmazingSuggestion";
 import Profile from "../../pages/Profile";
+import ProductsDetail from "../../pages/user/ProductsDetail";
+import Main from "../../components/Main";
 function Layout({ children }) {
-  const { setCurrentTheme, screenSize, activeMenu } = useContext(UIContext);
+  const { setUserTheme, screenSize, activeMenu } = useContext(UIContext);
 
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem("theme");
-    if (currentThemeColor) setCurrentTheme(currentThemeColor);
+    const userTheme = localStorage.getItem("userTheme");
+    if (userTheme) setUserTheme(userTheme);
   }, []);
 
   return (
-    <>
+    <MainLayout>
       <Navbar />
       <Sidebar />
-      <main
-        className={`min-h-screen  mx-auto${
-          screenSize > 900 && activeMenu ? " mr-[270px]" : "mr-0"
-        } max-w-7xl flex-grow bg-white px-5 pt-16 dark:bg-neutral-800 md:px-8 `}
-      >
+      <Main>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route index element={<Landing />} />
           <Route path="profile" element={<Profile />} />
           <Route path="best-sellers" element={<BestSellers />} />
           <Route
@@ -41,10 +39,11 @@ function Layout({ children }) {
           <Route path="amazing-suggestion" element={<AmazingSuggestion />} />
 
           <Route path="support" element={<Support />} />
+          <Route path="search" element={<ProductsDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
-    </>
+      </Main>
+    </MainLayout>
   );
 }
 

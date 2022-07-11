@@ -5,13 +5,12 @@ import SidebarList from "../../components/SidebarList";
 import { sidebarAdminData } from "../../assets/data";
 import { IconContext } from "react-icons/lib";
 import axios from "../../api/axios";
+import { Link } from "react-router-dom";
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
     useContext(UIContext);
 
   const [sidebarData, setSidebarData] = useState([]);
-
-  
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -45,17 +44,18 @@ function Sidebar(props) {
         }`}
       >
         {/* <!--===== TOP =====--> */}
-        <div
-          className={`flex h-10 gap-2  px-3${
+
+        <Link
+          to={"/"}
+          className={`block select-none items-center  justify-center  py-2 pr-8 ${
             screenSize > 900
-              ? " hidden"
+              ? "hidden"
               : " border-b-[0.5px] border-b-gray-400 border-opacity-20"
           }`}
         >
-          <h2 className="flex select-none items-center justify-center">
-            لوگو شرکت
-          </h2>
-        </div>
+          لوگو شرکت
+        </Link>
+
         {/* <!--===== MAIN =====--> */}
         <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
           <IconContext.Provider value={{ size: "22px" }}>

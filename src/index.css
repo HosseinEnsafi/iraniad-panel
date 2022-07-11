@@ -45,6 +45,38 @@ body {
   }
 }
 
+.hide-arrow::-webkit-outer-spin-button,
+.hide-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
+}
+
+.pricing__label::after,
+.pricing__label::before {
+  content: "";
+  position: absolute;
+}
+
+.pricing__label::before {
+  top: 0;
+  right: 100%;
+  width: 5px;
+  height: 5px;
+  background-color: rgb(37 99 235);
+}
+
+.pricing__label::after {
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 50%;
+  height: 14px;
+  clip-path: polygon(0 100%, 50% 0%, 100% 100%);
+  @apply bg-gray-200 dark:bg-neutral-500;
+}
+
 @layer base {
   html {
     @apply dark:scrollbar-thumb-black;
@@ -67,13 +99,13 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: #e0cbcb;
+  background: rgb(128, 128, 128);
   border-radius: 100vh;
   border: 3px solid #f6f7ed;
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  background: #755f69;
+  background: rgb(110, 110, 110);
 }
 
 @font-face {

@@ -28,7 +28,7 @@ export const loginUser = (phone, password) => {
         const userData = {name: `${firstName} ${lastName}`,
         api_token,awatar,wallet,role,status,verify,};
 
-        window.localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("user", JSON.stringify(userData));
         dispatch(loginUserSuccess(userData));
       })
       .catch((err) => {

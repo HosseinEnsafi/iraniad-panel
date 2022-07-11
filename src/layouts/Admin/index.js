@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import MainLayout from "..";
 import { UIContext } from "../../context/UIState/UIContext";
 import NotFound from "../../pages/404";
 import Dashboard from "../../pages/admin/Dashboard";
@@ -15,31 +14,31 @@ import AnsweringTickets from "../../pages/admin/AnsweringTickets";
 import ProtectedRoute from "../../routes/ProtectedRoute";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import MainLayout from "./MainLyaout";
+import Main from "../../components/Main";
 function Layout({ children }) {
   const { user } = useSelector((state) => state.auth);
 
-  const { setCurrentTheme, screenSize, activeMenu } = useContext(UIContext);
+  const { setAdminTheme, screenSize, activeMenu } = useContext(UIContext);
+
   useEffect(() => {
-    const currentThemeColor = localStorage.getItem("theme");
-    if (currentThemeColor) setCurrentTheme(currentThemeColor);
+    const adminThemeColor = localStorage.getItem("adminTheme");
+    if (adminThemeColor) setAdminTheme(adminThemeColor);
   }, []);
 
   return (
-    <>
+    <MainLayout>
       <Navbar />
       <Sidebar />
-      <main
-        className={` min-h-screen mx-auto${
-          screenSize > 900 && activeMenu ? " mr-[270px]" : "mr-0"
-        } max-w-7xl flex-grow bg-white px-5 pt-16 dark:bg-neutral-800 md:px-8 `}
-      >
+      <Sidebar />
+      <Main>
         <Routes>
           <Route
             element={
               <ProtectedRoute isAllowed={user?.role.includes("OWNER")} />
             }
           >
-            <Route element={<Dashboard />} path="/" />
+            <Route element={<Dashboard />} index />
             <Route element={<Dashboard />} path="dashboard" />
             <Route element={<SubmitOrder />} path="submit-order" />
             <Route element={<Orders />} path="orders" />
@@ -51,8 +50,8 @@ function Layout({ children }) {
             <Route element={<NotFound />} path="*" />
           </Route>
         </Routes>
-      </main>
-    </>
+      </Main>
+    </MainLayout>
   );
 }
 

@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { UIContext } from "./UIContext";
 
-
-
 const UIProvider = (props) => {
-  const [currentTheme, setCurrentTheme] = useState("Light");
+  const [adminTheme, setAdminTheme] = useState("Dark");
+  const [userTheme, setUserTheme] = useState("Light");
   const [activeMenu, setActiveMenu] = useState(false);
   const [screenSize, setScreenSize] = useState(undefined);
   return (
     <UIContext.Provider
       value={{
         activeMenu,
-        currentTheme,
+        adminTheme,
+        userTheme,
         screenSize,
         setScreenSize,
-        setCurrentTheme,
+        setAdminTheme,
+        setUserTheme,
         setActiveMenu,
       }}
     >

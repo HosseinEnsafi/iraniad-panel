@@ -1,17 +1,6 @@
 import React from "react";
 import userImg from "../../assets/img/none.jpg";
-import {
-  BiUser,
-  BiWallet,
-  BiTachometer,
-  BiCart,
-  BiListPlus,
-  BiListOl,
-  BiMoney,
-  BiLogOutCircle,
-  BiListUl,
-} from "react-icons/bi";
-import { FaUsers, FiUsers } from "react-icons/fa";
+import { BiUser, BiWallet, BiTachometer, BiLogOutCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import UserProfileItem from "../UserProfileItem";
 import { logoutUser } from "../../redux";
@@ -52,39 +41,6 @@ function UserProfile() {
           </div>
         </Link>
         <ul className="flex flex-col gap-[10px] py-3 px-2">
-          {role === "OWNER" && (
-            <UserProfileItem
-              icon={<BiTachometer />}
-              text="پنل ادمین"
-              to="/admin/dashboard"
-            />
-          )}
-
-          {/* <UserProfileItem
-            icon={<BiTachometer />}
-            text="پنل ادمین"
-            to="/admin/dashboard"
-          /> */}
-          {/* <UserProfileItem
-            icon={<BiCart />}
-            to="/admin/submit-order"
-            text="ثبت سفارش"
-          /> */}
-          {/* <UserProfileItem
-            icon={<BiListUl className="rotate-180" />}
-            to="/admin/orders"
-            text="لیست سفارشات"
-          /> */}
-          {/* <UserProfileItem
-            icon={<FaUsers />}
-            to="/admin/users-list"
-            text="لیست کاربران"
-          /> */}
-          {/* <UserProfileItem
-            icon={<BiMoney />}
-            to="/admin/transaction"
-            text="تراکنش ها"
-          /> */}
           <UserProfileItem
             icon={<BiLogOutCircle />}
             onClick={() => {
