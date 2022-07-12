@@ -61,9 +61,11 @@ body {
 .pricing__label::before {
   top: 0;
   right: 100%;
-  width: 5px;
-  height: 5px;
+  width: 16px;
+  height: 14px;
+  left: -14px;
   background-color: rgb(37 99 235);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
 .pricing__label::after {
