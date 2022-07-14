@@ -12,8 +12,9 @@ import DiscountsAndSuggestion from "../../pages/user/DiscountsAndSuggestion";
 import BeSeller from "../../pages/user/BeSeller";
 import AmazingSuggestion from "../../pages/user/AmazingSuggestion";
 import Profile from "../../pages/Profile";
-import ProductsDetail from "../../pages/user/ProductsDetail";
 import Main from "../../components/Main";
+import ProductsPage from "../../pages/user/ProductsPage";
+import ProductDetail from "../../pages/user/ProductDetail";
 function Layout({ children }) {
   const { setUserTheme, screenSize, activeMenu } = useContext(UIContext);
 
@@ -39,7 +40,8 @@ function Layout({ children }) {
           <Route path="amazing-suggestion" element={<AmazingSuggestion />} />
 
           <Route path="support" element={<Support />} />
-          <Route path="search" element={<ProductsDetail />} />
+          <Route path="search" element={<ProductsPage />} />
+          <Route path="products/:productId" element={<ProductDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Main>

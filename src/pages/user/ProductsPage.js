@@ -1,22 +1,21 @@
 import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { productsData } from "../../assets/data";
 import ProductCard from "../../components/ProductCard";
-function ProductsDetail() {
+function ProductsPage() {
   const [search] = useSearchParams();
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://api.iraniad.com/representation/services", {
+      .get("/services", {
         params: {
           cat_id: +search.get("cat_id"),
           domain: "https://shahin.iraniad.com",
         },
       })
       .then((res) => setProductsData(res.data.data));
-  }, []);
+  }, [search]);
   // console.log(productsData);
   return (
     <>
@@ -36,4 +35,4 @@ function ProductsDetail() {
   );
 }
 
-export default ProductsDetail;
+export default ProductsPage;
