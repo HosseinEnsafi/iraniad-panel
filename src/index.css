@@ -43,6 +43,10 @@ body {
   .error-bx__message {
     @apply text-white;
   }
+
+  .products__list {
+    @apply grid grid-cols-1 content-center justify-items-center  gap-x-4 gap-y-9 md:grid-cols-2  xl:grid-cols-3;
+  }
 }
 
 .hide-arrow::-webkit-outer-spin-button,

@@ -5,11 +5,14 @@ import SidebarList from "../../components/SidebarList";
 import { IconContext } from "react-icons/lib";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
     useContext(UIContext);
-
+  const [loading, setLoading] = useState(true);
   const [sidebarData, setSidebarData] = useState([]);
   useEffect(() => {
     axios
@@ -20,6 +23,7 @@ function Sidebar(props) {
       })
       .then((data) => {
         // console.log(data.data.data);
+        setLoading(false);
         setSidebarData(data.data.data);
       });
   }, []);
@@ -75,6 +79,17 @@ function Sidebar(props) {
           </div>
           <div className={` mt-10`}>
             <h1 className="mb-4 px-6 text-lg">سرویس ها</h1>
+            {loading && (
+              <SkeletonTheme baseColor="#333" highlightColor="#444">
+                <Skeleton
+                  count={2}
+                  direction="rtl"
+                  inline
+                  className="mb-6 mr-4 h-4 w-full "
+                  width={"80%"}
+                />
+              </SkeletonTheme>
+            )}
             <SidebarList items={sidebarData} />
           </div>
         </IconContext.Provider>
