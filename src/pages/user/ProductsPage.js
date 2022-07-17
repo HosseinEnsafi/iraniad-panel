@@ -2,8 +2,8 @@ import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ProductCard from "../../components/ProductCard";
-
 import ProductCardSkeleton from "../../components/skeleton/ProductCardSkeleton";
+
 
 function ProductsPage() {
   const [search] = useSearchParams();
@@ -26,13 +26,13 @@ function ProductsPage() {
         setLoading(false);
       });
   }, [search]);
-  // console.log(productsData);
+
   return (
     <>
       {loading && (
-        <div className="products__list mt-20">
-          {Array.from("foo").map(() => (
-            <ProductCardSkeleton />
+        <div className="products__list mt-28">
+          {[1, 2, 3].map((_, i) => (
+            <ProductCardSkeleton key={i} />
           ))}
         </div>
       )}
@@ -42,7 +42,7 @@ function ProductsPage() {
             {data.label}
           </h1>
 
-          <div className=" products__list">
+          <div className="products__list">
             {data.items.map((item) => (
               <ProductCard item={item} key={item.id} />
             ))}

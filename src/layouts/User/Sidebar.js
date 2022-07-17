@@ -22,11 +22,14 @@ function Sidebar(props) {
         },
       })
       .then((data) => {
-        // console.log(data.data.data);
         setLoading(false);
         setSidebarData(data.data.data);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(sidebarData);
+  }, [sidebarData]);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
