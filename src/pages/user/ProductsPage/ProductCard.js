@@ -1,24 +1,21 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BiCheck } from "react-icons/bi";
 import { Link } from "react-router-dom";
-function ProductCard({ item }) {
-  // const { id, name, label, items } = data;
+import findPlan from "../../../utils/findPlan";
+import isInRange from "../../../utils/isInRange";
+import toK from "../../../utils/toK";
+import isFirstPlan from "../../../utils/isFirstPlan";
+import PlanItem from "./PlanItem";
 
+function ProductCard({ item }) {
   const { periods, maxOrder, label, id } = item;
 
   const [quantity, setQuantity] = useState(0);
-  const [price, setPrice] = useState(quantity);
+  const [price, setPrice] = useState(0);
   const [initial, setInitial] = useState(true);
   const quantityStep = 100;
 
-  const toK = (num) => Math.floor(num / 1000) + "K";
-  const isInRange = (start, end, quantity) =>
-    +start <= quantity && +end >= quantity;
-  const currentPlan = periods.find(
-    (plan) => +plan.start <= quantity && +plan.end >= quantity
-  );
-
+  const currentPlan = findPlan(periods, quantity);
   useEffect(() => {
     if (initial) {
       setInitial(false);
@@ -34,62 +31,15 @@ function ProductCard({ item }) {
   }, [quantity]);
 
   return (
-    <article className="relative w-full max-w-md bg-gray-200  p-5 shadow transition-shadow hover:shadow-lg dark:bg-neutral-500">
+    <article className="relative  w-full max-w-md bg-gray-200  p-5  transition-shadow hover:shadow-lg dark:bg-neutral-500">
       <div className="pricing__label absolute left-4 -top-[12px] flex h-20 w-[4.375rem] items-center justify-center whitespace-nowrap bg-gradient-to-tl  from-blue-400 to-blue-500  text-[15px] text-white">
-        <span className="">{label}</span>
+        <span>{label}</span>
       </div>
       <div className="flex h-full flex-col">
         <ul className=" pt-6 leading-10">
-          {periods &&
-            periods.map((plan, i) => {
-              if (+plan.start === 1)
-                return (
-                  <li
-                    key={i}
-                    className={`
-                  flex items-baseline gap-3 
-                  ${
-                    isInRange(plan.start, plan.end, quantity) &&
-                    " text-green-600 dark:text-green-400"
-                  }`}
-                  >
-                    <p>
-                      تا {toK(plan.end)} هر عدد {plan.cost} تومان
-                    </p>
-                    <BiCheck
-                      className={` h-5 w-5 rounded-full bg-green-400 text-lg  text-white ${
-                        isInRange(plan.start, plan.end, quantity)
-                          ? "block"
-                          : "hidden"
-                      }`}
-                    />
-                  </li>
-                );
-              else
-                return (
-                  <li
-                    key={i}
-                    className={`
-                  flex items-baseline gap-3 
-                  ${
-                    isInRange(plan.start, plan.end, quantity) &&
-                    " text-green-600 dark:text-green-400"
-                  }`}
-                  >
-                    <p>
-                      از {toK(plan.start)} تا {toK(plan.end)} هر عدد {plan.cost}{" "}
-                      تومان
-                    </p>
-                    <BiCheck
-                      className={` h-5 w-5 rounded-full bg-green-400 text-lg  text-white ${
-                        isInRange(plan.start, plan.end, quantity)
-                          ? "block"
-                          : "hidden"
-                      }`}
-                    />
-                  </li>
-                );
-            })}
+          {periods.map((plan, i) => (
+            <PlanItem key={i} plan={plan} quantity={quantity} />
+          ))}
         </ul>
 
         <form className="mt-auto pt-4" onSubmit={(e) => e.preventDefault()}>
@@ -97,12 +47,11 @@ function ProductCard({ item }) {
             <div className="flex  max-h-12 rounded-lg border-2 border-gray-500 border-opacity-50 dark:border-gray-300">
               <span
                 onClick={() =>
-                  setQuantity((prevquantity) => prevquantity + quantityStep)
+                  setQuantity((prevQty) => prevQty + quantityStep)
                 }
                 className="flex h-full w-8  cursor-pointer select-none items-center  justify-center rounded-tr-md rounded-br-md bg-[#ccc] bg-opacity-80 dark:bg-slate-900"
               >
-                {" "}
-                +{" "}
+                +
               </span>
               <input
                 dir="ltr"
@@ -124,8 +73,7 @@ function ProductCard({ item }) {
                 }
                 className="flex h-full w-8 cursor-pointer select-none items-center  justify-center rounded-tl-md rounded-bl-md bg-[#ccc]  bg-opacity-80  dark:bg-slate-900"
               >
-                {" "}
-                -{" "}
+                -
               </span>
             </div>
             {quantity > maxOrder && (

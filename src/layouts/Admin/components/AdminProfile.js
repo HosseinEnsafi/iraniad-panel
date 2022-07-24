@@ -1,10 +1,11 @@
 import React from "react";
-import userImg from "../../assets/img/none.jpg";
-import { BiUser, BiWallet, BiTachometer, BiLogOutCircle } from "react-icons/bi";
+import { BiLogOutCircle, BiUser, BiWallet } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import UserProfileItem from "../UserProfileItem";
-import { logoutUser } from "../../redux";
+import userImg from "../../../assets/img/none.jpg";
+
 import { Link } from "react-router-dom";
+import { logoutUser } from "../../../redux";
+import AdminProfileItem from "./AdminProfileItem";
 function UserProfile() {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function UserProfile() {
           </div>
         </Link>
         <ul className="flex flex-col gap-[10px] py-3 px-2">
-          <UserProfileItem
+          <AdminProfileItem
             icon={<BiLogOutCircle />}
             onClick={() => {
               dispatch(logoutUser());

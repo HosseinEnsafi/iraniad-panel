@@ -1,9 +1,9 @@
-import axios from "../../api/axios";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import ProductCard from "../../components/ProductCard";
-import ProductCardSkeleton from "../../components/skeleton/ProductCardSkeleton";
+import axios from "../../../api/axios";
 
+import ProductCard from "./ProductCard";
+import ProductCardSkeleton from "./ProductCardSkeleton";
 
 function ProductsPage() {
   const [search] = useSearchParams();

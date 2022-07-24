@@ -1,21 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import Main from "../../components/Main";
 import { UIContext } from "../../context/UIState/UIContext";
 import NotFound from "../../pages/404";
+import AnsweringTickets from "../../pages/admin/AnsweringTickets";
+import Checkout from "../../pages/admin/Checkout";
 import Dashboard from "../../pages/admin/Dashboard";
 import Orders from "../../pages/admin/Orders";
+import PricingProducts from "../../pages/admin/PricingProducts";
 import SubmitOrder from "../../pages/admin/SubmitOrder";
 import Transaction from "../../pages/admin/Transaction";
 import UsersList from "../../pages/admin/UsersList";
-import PricingProducts from "../../pages/admin/PricingProducts";
-import Checkout from "../../pages/admin/Checkout";
-import AnsweringTickets from "../../pages/admin/AnsweringTickets";
 import ProtectedRoute from "../../routes/ProtectedRoute";
+import MainLayout from "./MainLyaout";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import MainLayout from "./MainLyaout";
-import Main from "../../components/Main";
 function Layout({ children }) {
   const { user } = useSelector((state) => state.auth);
 

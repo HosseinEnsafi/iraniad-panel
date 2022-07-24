@@ -3,7 +3,7 @@ import { BiUser, BiMoon, BiSun, BiGridAlt } from "react-icons/bi";
 import { UIContext } from "../../context/UIState/UIContext";
 import LoginModal from "../../components/UI/LoginModal/LoginModal";
 import { useDispatch, useSelector } from "react-redux";
-import AdminProfile from "../../components/Admin/AdminProfile";
+import AdminProfile from "./components/AdminProfile";
 import { openLogin } from "../../redux";
 import { Link } from "react-router-dom";
 

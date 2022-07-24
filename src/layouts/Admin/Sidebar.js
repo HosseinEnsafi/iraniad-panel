@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { UIContext } from "../../context/UIState/UIContext";
 import Backdrop from "../../components/UI/Backdrop";
-import SidebarList from "../../components/SidebarList";
-import { sidebarAdminData } from "../../assets/data";
+import { UIContext } from "../../context/UIState/UIContext";
+
 import { IconContext } from "react-icons/lib";
-import axios from "../../api/axios";
 import { Link } from "react-router-dom";
+import SidebarList from "../../components/UI/sidebar/SidebarList";
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
     useContext(UIContext);

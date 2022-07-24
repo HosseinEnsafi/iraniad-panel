@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { UIContext } from "../../context/UIState/UIContext";
 import Backdrop from "../../components/UI/Backdrop";
-import SidebarList from "../../components/SidebarList";
+import { UIContext } from "../../context/UIState/UIContext";
+
 import { IconContext } from "react-icons/lib";
-import axios from "../../api/axios";
-import { Link } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { SkeletonTheme } from "react-loading-skeleton";
+import { Link } from "react-router-dom";
+import axios from "../../api/axios";
+import SidebarList from "../../components/UI/sidebar/SidebarList";
+import SidebarSkeleton from "./SidebarSkeleton";
 
 function Sidebar(props) {
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
@@ -82,17 +83,8 @@ function Sidebar(props) {
           </div>
           <div className={` mt-10`}>
             <h1 className="mb-4 px-6 text-lg">سرویس ها</h1>
-            {loading && (
-              <SkeletonTheme baseColor="#333" highlightColor="#444">
-                <Skeleton
-                  count={2}
-                  direction="rtl"
-                  inline
-                  className="mb-6 mr-4 h-4 w-full "
-                  width={"80%"}
-                />
-              </SkeletonTheme>
-            )}
+            {loading && <SidebarSkeleton />}
+
             <SidebarList items={sidebarData} />
           </div>
         </IconContext.Provider>

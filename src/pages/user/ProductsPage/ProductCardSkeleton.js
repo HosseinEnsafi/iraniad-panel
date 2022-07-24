@@ -1,10 +1,15 @@
-import React from "react";
-import Skeleton from "react-loading-skeleton";
-import { SkeletonTheme } from "react-loading-skeleton";
+import React, { useContext } from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { UIContext } from "../../../context/UIState/UIContext";
 function ProductCardSkeleton() {
+  const { userTheme } = useContext(UIContext);
+
   return (
-    <SkeletonTheme baseColor="#333" highlightColor="#444">
+    <SkeletonTheme
+      baseColor={`${userTheme === "Light" ? "#ebebeb" : "#333"}`}
+      highlightColor={`${userTheme === "Light" ? "#f5f5f5" : "#444"}`}
+    >
       <div className="flex w-full flex-col gap-4 px-10 md:px-4">
         <div className="mt-12">
           <Skeleton
