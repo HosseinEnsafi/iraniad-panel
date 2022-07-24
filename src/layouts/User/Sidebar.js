@@ -28,9 +28,7 @@ function Sidebar(props) {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(sidebarData);
-  }, [sidebarData]);
+
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);

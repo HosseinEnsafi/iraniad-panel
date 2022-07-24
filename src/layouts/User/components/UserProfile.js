@@ -1,9 +1,9 @@
 import React from "react";
-import userImg from "../assets/img/none.jpg";
+import userImg from "../../../assets/img/none.jpg";
 import { BiUser, BiWallet, BiTachometer, BiLogOutCircle } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import UserProfileItem from "./UserProfileItem";
-import { logoutUser } from "../redux";
+import { logoutUser } from "../../../redux";
 import { Link } from "react-router-dom";
 function UserProfile() {
   const { user } = useSelector((state) => state.auth);
