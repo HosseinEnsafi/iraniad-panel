@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import opacity from "react-element-popper/animations/opacity";
 import DatePicker from "react-multi-date-picker";
-
-import { useContext } from "react";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 import "react-multi-date-picker/styles/layouts/mobile.css";
@@ -13,9 +11,9 @@ import PlanItem from "../../../components/PlanItem";
 import QuantityInput from "../../../components/QuantityInput";
 import { UIContext } from "../../../context/UIState/UIContext";
 import useCalcPrice from "../../../hooks/useCalcPrice";
+import findPlan from "../../../utils/findPlan";
 import toK from "../../../utils/toK";
 import DetailCard from "./DetailCard";
-import findPlan from "../../../utils/findPlan";
 
 function ProductDetail() {
   const params = useParams();

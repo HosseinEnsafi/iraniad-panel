@@ -8,8 +8,7 @@ function useCalcPrice(periods, qty) {
   const [initial, setInitial] = useState(true);
   const currentPlan = findPlan(periods, quantity);
   useEffect(() => {
-    console.log("REn");
-    if (initial) {
+    if (initial && !qty) {
       setInitial(false);
       return;
     }
@@ -20,7 +19,7 @@ function useCalcPrice(periods, qty) {
     }
 
     setPrice(quantity * currentPlan.cost + " تومان ");
-  }, [quantity, initial, currentPlan]);
+  }, [quantity, currentPlan]);
 
   return {
     price,

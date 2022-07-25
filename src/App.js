@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AdminLayout from "./layouts/Admin";
 import UserLayout from "./layouts/User";
 

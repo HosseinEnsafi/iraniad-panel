@@ -27,6 +27,10 @@ function ProductsPage() {
       });
   }, [search]);
 
+  useEffect(() => {
+    console.log(productsData);
+  }, [productsData]);
+
   return (
     <>
       {loading && (
