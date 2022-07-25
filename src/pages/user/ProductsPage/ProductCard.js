@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import PlanItem from "../../../components/PlanItem";
 import QuantityInput from "../../../components/QuantityInput";
 import useCalcPrice from "../../../hooks/useCalcPrice";
-import findPlan from "../../../utils/findPlan";
 import toK from "../../../utils/toK";
 
 function ProductCard({ item }) {
   const { periods, maxOrder, label, id } = item;
   const navigate = useNavigate();
-  // const [quantity, setQuantity] = useState(0);
-  // const [price, setPrice] = useState(0);
-  // const [initial, setInitial] = useState(true);
   const { price, quantity, setQuantity } = useCalcPrice(periods);
-  // const currentPlan = findPlan(periods, quantity);
 
   return (
     <article className="relative  w-full max-w-md bg-gray-200  p-5  transition-shadow hover:shadow-lg dark:bg-neutral-500">
-      <div className="pricing__label absolute left-4 -top-[12px] flex h-20 w-[4.375rem] items-center justify-center whitespace-nowrap bg-gradient-to-tl  from-blue-400 to-blue-500  text-[15px] text-white">
-        <span>{label}</span>
-      </div>
+      {label && (
+        <div className="pricing__label absolute left-4 -top-[12px] flex h-20 w-[4.375rem] items-center justify-center whitespace-nowrap bg-gradient-to-tl  from-blue-400 to-blue-500  text-[15px] text-white">
+          <span>{label}</span>
+        </div>
+      )}
       <div className="flex h-full flex-col">
         <ul className=" pt-6 leading-10">
           {periods.map((plan, i) => (
@@ -37,18 +34,17 @@ function ProductCard({ item }) {
             )}
             ‍
             {quantity < maxOrder && (
-              <p className=" mr-2 self-center  text-sm md:text-base">
-                {price}{" "}
-              </p>
+              <p className=" mr-2 self-center  text-sm md:text-base">{price}</p>
             )}
           </div>
           <button
+            disabled={quantity > maxOrder}
             onClick={() =>
-              navigate(`/products/${id}?qty=${quantity}`, {
+              navigate(`/products/${id}`, {
                 state: { item, quantity },
               })
             }
-            className="mt-6 inline-block rounded-2xl bg-gradient-to-tr from-blue-400 to-blue-500 p-3  text-white duration-200 hover:bg-gradient-to-tl hover:from-blue-500 hover:to-blue-400 "
+            className="mt-6 inline-block rounded-2xl bg-gradient-to-tr from-blue-400 to-blue-500 p-3 text-white  duration-200 hover:bg-gradient-to-tl hover:from-blue-500 hover:to-blue-400 disabled:cursor-not-allowed disabled:bg-gradient-to-t disabled:from-slate-600 disabled:to-gray-500 disabled:hover:bg-gradient-to-tl"
           >
             ثبت سفارش
           </button>
