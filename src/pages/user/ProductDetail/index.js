@@ -14,6 +14,8 @@ import QuantityInput from "../../../components/QuantityInput";
 import { UIContext } from "../../../context/UIState/UIContext";
 import useCalcPrice from "../../../hooks/useCalcPrice";
 import toK from "../../../utils/toK";
+import DetailCard from "./DetailCard";
+import findPlan from "../../../utils/findPlan";
 
 function ProductDetail() {
   const params = useParams();
@@ -26,6 +28,7 @@ function ProductDetail() {
   const [date, setDate] = useState(Date.now());
   const [time, setTime] = useState(Date.now());
   const submitHandler = () => {};
+  const curPlan = findPlan(periods, quantity);
   return (
     <div>
       <ul className=" leading-10">
@@ -35,8 +38,20 @@ function ProductDetail() {
       </ul>
       <form
         onSubmit={submitHandler}
-        className="mt-5 grid items-start justify-items-center gap-y-5 xs:grid-cols-2 sm:grid-cols-3"
+        className="mt-10 grid items-start justify-items-center gap-y-5 xs:grid-cols-2 sm:grid-cols-3"
       >
+        <div className="  inline-flex flex-1 flex-col items-start gap-3">
+          <div className="flex flex-col items-center gap-2">
+            <label htmlFor="">تعداد</label>
+            <QuantityInput quantity={quantity} setQuantity={setQuantity} />
+          </div>
+          {quantity > maxOrder && (
+            <p className=" text-sm text-red-700  dark:text-white md:text-base">
+              حداکثر تعداد {toK(maxOrder)} میباشد
+            </p>
+          )}
+        </div>
+
         <div
           className="flex flex-1 flex-col items-center gap-2"
           style={{ direction: "rtl" }}
@@ -53,7 +68,7 @@ function ProductDetail() {
             calendarPosition="bottom-right"
             format="MM/DD/YYYY"
             value={date}
-            onChange={(value) => setDate(value)}
+            onChange={(value) => setDate(value.toDate())}
             minDate={Date.now()}
             inputClass="data-picker__input"
             animations={[opacity()]}
@@ -71,21 +86,23 @@ function ProductDetail() {
             calendarPosition="bottom-right"
             inputClass="data-picker__input"
             value={time}
-            onChange={(value) => setTime(value)}
+            onChange={(value) => setTime(value.toDate())}
           />
         </div>
-        <div className="  inline-flex flex-1 flex-col items-start gap-3">
-          <div className="flex flex-col items-center gap-2">
-            <label htmlFor="">تعداد</label>
-            <QuantityInput quantity={quantity} setQuantity={setQuantity} />
-          </div>
-          {quantity > maxOrder && (
-            <p className=" text-sm text-red-700  dark:text-white md:text-base">
-              حداکثر تعداد {toK(maxOrder)} میباشد
-            </p>
-          )}
-        </div>
       </form>
+
+      <div className=" mt-16 grid justify-items-center gap-4 sm:grid-cols-2 ">
+        <DetailCard
+          quantity={quantity}
+          price={price}
+          time={time}
+          curPlan={curPlan}
+          date={date}
+        />
+        <div className="bg-red-400 p-4">Product card</div>
+        <div className="bg-red-400 p-4">Product card</div>
+        <div className="bg-red-400 p-4">Product card</div>
+      </div>
     </div>
   );
 }

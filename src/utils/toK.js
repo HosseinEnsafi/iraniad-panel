@@ -1,3 +1,5 @@
-const toK = (num) => Math.floor(num / 1000) + "K";
+const toK = (num) => {
+  return Math.floor(num / 1000) + "K";
+};
 
 export default toK;

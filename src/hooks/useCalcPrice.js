@@ -8,6 +8,7 @@ function useCalcPrice(periods, qty) {
   const [initial, setInitial] = useState(true);
   const currentPlan = findPlan(periods, quantity);
   useEffect(() => {
+    console.log("REn");
     if (initial) {
       setInitial(false);
       return;
