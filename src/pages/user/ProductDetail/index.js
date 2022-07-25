@@ -14,7 +14,6 @@ import useCalcPrice from "../../../hooks/useCalcPrice";
 import findPlan from "../../../utils/findPlan";
 import toK from "../../../utils/toK";
 import DetailCard from "./DetailCard";
-
 function ProductDetail() {
   const params = useParams();
   const location = useLocation();

@@ -1,8 +1,7 @@
 import React from "react";
-import { DateObject } from "react-multi-date-picker";
-import toK from "../../../utils/toK";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import { DateObject } from "react-multi-date-picker";
 
 function DetailCard({ time, date, quantity, price, curPlan }) {
   const processTime = +curPlan?.time;
@@ -33,7 +32,7 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
   }).format("HH:mm");
 
   return (
-    <div className="w-full max-w-sm rounded-md  border-2 border-gray-300  bg-white px-1 py-3 ">
+    <div className="border-gray- w-full max-w-sm  rounded-md border-2  px-1 py-3 ">
       <ul className="grid grid-cols-2 justify-items-center gap-x-2 gap-y-4">
         <li className="whitespace-nowrap text-sm   sm:text-base">
           قیمت واحد : {curPlan && curPlan.cost} تومان
