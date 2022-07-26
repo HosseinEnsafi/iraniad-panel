@@ -59,7 +59,7 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
       <h4 className="mt-5 text-center tracking-wide">قیمت نهایی : {price}</h4>
 
       <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {user && (
+        {!user && (
           <div className="flex flex-col gap-1">
             <label className=" text-sm sm:text-base" htmlFor="">
               شماره موبایل
@@ -68,12 +68,14 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
           </div>
         )}
 
-        <div className="flex flex-col gap-1">
-          <label className=" text-sm sm:text-base" htmlFor="">
-            شماره تایید
-          </label>
-          <input className="checkout__input" type="text" />
-        </div>
+        {!user && (
+          <div className="flex flex-col gap-1">
+            <label className=" text-sm sm:text-base" htmlFor="">
+              شماره تایید
+            </label>
+            <input className="checkout__input" type="text" />
+          </div>
+        )}
         <div className="flex w-full justify-center">
           <button className="pricing__btn mt-2 w-24">پرداخت</button>
         </div>
