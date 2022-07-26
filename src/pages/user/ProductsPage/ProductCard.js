@@ -44,7 +44,7 @@ function ProductCard({ item }) {
                 state: { item, quantity },
               })
             }
-            className="mt-6 inline-block rounded-2xl bg-gradient-to-tr from-blue-400 to-blue-500 p-3 text-white  duration-200 hover:bg-gradient-to-tl hover:from-blue-500 hover:to-blue-400 disabled:cursor-not-allowed disabled:bg-gradient-to-t disabled:from-slate-600 disabled:to-gray-500 disabled:hover:bg-gradient-to-tl"
+            className="pricing__btn"
           >
             ثبت سفارش
           </button>

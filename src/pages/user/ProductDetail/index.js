@@ -27,7 +27,7 @@ function ProductDetail() {
   const submitHandler = () => {};
   const curPlan = findPlan(periods, quantity);
   return (
-    <div>
+    <div className="pb-4">
       <ul className=" leading-10">
         {periods.map((plan, i) => [
           <PlanItem plan={plan} key={i} quantity={quantity} />,
@@ -96,9 +96,6 @@ function ProductDetail() {
           curPlan={curPlan}
           date={date}
         />
-        <div className="bg-red-400 p-4">Product card</div>
-        <div className="bg-red-400 p-4">Product card</div>
-        <div className="bg-red-400 p-4">Product card</div>
       </div>
     </div>
   );

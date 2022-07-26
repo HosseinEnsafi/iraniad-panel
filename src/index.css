@@ -52,12 +52,20 @@ body {
   .sidebar__item-label--open {
     @apply pb-2 text-red-500 dark:text-red-400;
   }
+
+  .pricing__btn {
+    @apply mt-6 inline-block rounded-2xl bg-gradient-to-tr from-blue-400 to-blue-500 p-3 text-white  duration-200 hover:bg-gradient-to-tl hover:from-blue-500 hover:to-blue-400 disabled:cursor-not-allowed disabled:bg-gradient-to-t disabled:from-slate-600 disabled:to-gray-500 disabled:hover:bg-gradient-to-tl;
+  }
   .products__list {
     @apply grid grid-cols-1 content-center justify-items-center  gap-x-4 gap-y-9 md:grid-cols-2  xl:grid-cols-3;
   }
 
   .data-picker__input {
     @apply w-36 rounded-md border-2 border-gray-300 p-[7px] outline-none focus:border-blue-400 dark:bg-slate-700 dark:text-white;
+  }
+
+  .checkout__input {
+    @apply w-32 rounded-md border-2 border-gray-300 p-[7px] outline-none focus:border-blue-400 dark:bg-slate-700 dark:text-white;
   }
 }
 
