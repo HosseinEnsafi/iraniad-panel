@@ -11,7 +11,7 @@ function ProductCard({ item }) {
   const { price, quantity, setQuantity } = useCalcPrice(periods);
 
   return (
-    <article className="relative  w-full max-w-md bg-gray-200  p-5  transition-shadow hover:shadow-lg dark:bg-neutral-500">
+    <article className="relative  w-full max-w-md rounded-lg  bg-gray-200  p-5 transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
       {label && (
         <div className="pricing__label absolute left-4 -top-[12px] flex h-20 w-[4.375rem] items-center justify-center whitespace-nowrap bg-gradient-to-tl  from-blue-400 to-blue-500  text-[15px] text-white">
           <span>{label}</span>

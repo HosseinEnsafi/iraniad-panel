@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { BiChevronDown, BiChevronUp } from "../../../assets/icons";
 import { Link } from "react-router-dom";
 
 function SidebarItem({ item }) {
@@ -23,7 +23,7 @@ function SidebarItem({ item }) {
         </div>
 
         {open && (
-          <ul className=" space-y-4 bg-zinc-200 px-1 py-2 dark:bg-neutral-500">
+          <ul className=" space-y-4 bg-zinc-200 px-1 py-2 dark:bg-gray-600">
             {subCategories.map((item, i) => (
               <SidebarItem key={i} item={item} />
             ))}

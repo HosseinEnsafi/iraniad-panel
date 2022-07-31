@@ -1,9 +1,6 @@
 import React, { useEffect, useStaate } from "react";
-import { BiRightArrowAlt } from "react-icons/bi";
+import { BiRightArrowAlt } from "../../../assets/icons";
 function RegisterContent(props) {
-
-   
-
   return (
     <div className={`duration-200 ${props.active ? "block" : "hidden"}`}>
       <BiRightArrowAlt

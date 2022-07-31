@@ -8,13 +8,11 @@ import RegisterContent from "./RegisterContent";
 
 const ModalOverlay = (props) => {
   return (
-    <div className=" fixed left-[2%] top-[15vh] z-30 w-[96%] animate-scaleUp rounded-md bg-white p-2 sm:left-[calc(50%-16rem)]   sm:w-[32rem]">
+    <div className=" fixed left-[2%] top-[15vh] z-30 w-[96%] animate-scaleUp  rounded-md bg-white p-2  pb-4 dark:bg-gray-600 sm:left-[calc(50%-16rem)]   sm:w-[32rem]">
       <div className={props.className}>{props.children}</div>
     </div>
   );
 };
-
-const portalElement = document.getElementById("overlays");
 
 const LoginModal = (props) => {
   const dispatch = useDispatch();
@@ -24,14 +22,16 @@ const LoginModal = (props) => {
     setCurSlide(slide);
   };
 
+  const portalElement = document.getElementById("overlays");
+
   return (
     <Fragment>
       {createPortal(
-        <Backdrop onClick={() => dispatch(closeLogin())} />,
+        <Backdrop onClose={() => dispatch(closeLogin())} />,
         portalElement
       )}
       {createPortal(
-        <ModalOverlay className="relative overflow-hidden">
+        <ModalOverlay className="overflow relative dark:text-gray-100 ">
           {user ? (
             <>
               <p>با موفقیت وارد شدید</p>

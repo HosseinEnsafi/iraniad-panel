@@ -1,5 +1,5 @@
 import React from "react";
-import { BiCheck } from "react-icons/bi";
+import { BiCheck } from "../assets/icons";
 import isFirstPlan from "../utils/isFirstPlan";
 import isInRange from "../utils/isInRange";
 import toK from "../utils/toK";

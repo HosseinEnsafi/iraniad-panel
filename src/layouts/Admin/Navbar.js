@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { BiUser, BiMoon, BiSun, BiGridAlt } from "react-icons/bi";
+import { BiUser, BiMoon, BiSun, BiGridAlt } from "../../assets/icons";
 import { UIContext } from "../../context/UIState/UIContext";
-import LoginModal from "../../components/UI/LoginModal/LoginModal";
+import LoginModal from "../../components/UI/LoginModal";
 import { useDispatch, useSelector } from "react-redux";
 import AdminProfile from "./components/AdminProfile";
 import { openLogin } from "../../redux";
@@ -25,7 +25,7 @@ function Navbar() {
   }, [adminTheme]);
 
   return (
-    <header className="fixed top-0 left-0 z-20 flex h-[50px] w-full items-center justify-between bg-white p-2 shadow-md dark:bg-[#3d3d3d] md:z-10 md:pl-12">
+    <header className="fixed top-0 left-0 z-20 flex h-[50px] w-full items-center justify-between bg-white p-2 shadow-md dark:bg-gray-700 md:z-10 md:pl-12">
       <div className=" flex items-center gap-3">
         <button
           onClick={() => setActiveMenu((prevState) => !prevState)}

@@ -15,9 +15,11 @@ import Profile from "../../pages/Profile";
 import Main from "../../components/Main";
 import ProductsPage from "../../pages/user/ProductsPage";
 import ProductDetail from "../../pages/user/ProductDetail";
+import ProtectedRoute from "../../routes/ProtectedRoute";
+import { useSelector } from "react-redux";
 function Layout({ children }) {
   const { setUserTheme, screenSize, activeMenu } = useContext(UIContext);
-
+  const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     const userTheme = localStorage.getItem("userTheme");
     if (userTheme) setUserTheme(userTheme);
@@ -30,7 +32,14 @@ function Layout({ children }) {
       <Main>
         <Routes>
           <Route index element={<Landing />} />
-          <Route path="profile" element={<Profile />} />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute isAllowed={user}>
+                <Profile />
+              </ProtectedRoute>
+            }
+          ></Route>
           <Route path="best-sellers" element={<BestSellers />} />
           <Route
             path="discounts-suggestions"

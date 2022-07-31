@@ -1,8 +1,13 @@
-import { BiBroadcast, BiSupport, BiCreditCard } from "react-icons/bi";
-import { TbDiscount2 } from "react-icons/tb";
-import { AiOutlineFire } from "react-icons/ai";
-import { BsListUl } from "react-icons/bs";
-import { IoPricetagOutline, IoTicketOutline } from "react-icons/io5";
+import {
+  AiOutlineFire,
+  BiBroadcast,
+  BiCreditCard,
+  BiSupport,
+  BsListUl,
+  IoPricetagOutline,
+  IoTicketOutline,
+  TbDiscount2,
+} from "./icons";
 
 export const sidebarUserData = [
   [

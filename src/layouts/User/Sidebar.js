@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Backdrop from "../../components/UI/Backdrop";
 import { UIContext } from "../../context/UIState/UIContext";
 
-import { IconContext } from "react-icons/lib";
+import { IconContext } from "../../assets/icons";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Link } from "react-router-dom";
@@ -28,8 +28,6 @@ function Sidebar(props) {
       });
   }, []);
 
-
-
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -48,7 +46,7 @@ function Sidebar(props) {
     <>
       {activeMenu && (
         <Backdrop
-          onClick={() => {
+          onClose={() => {
             setActiveMenu(false);
           }}
           className={`${screenSize > 900 ? "hidden" : ""}`}
@@ -57,7 +55,7 @@ function Sidebar(props) {
       <aside
         className={`fixed top-0 h-screen w-60 bg-gray-100 shadow-sidebar dark:shadow-none ${
           screenSize < 900 ? "z-10 duration-300" : ""
-        } dark:bg-[#3d3d3d]   ${screenSize > 900 ? "mt-12 " : ""} ${
+        } dark:bg-gray-700  ${screenSize > 900 ? "mt-12 " : ""} ${
           activeMenu ? "translate-x-0" : "translate-x-60"
         }`}
       >

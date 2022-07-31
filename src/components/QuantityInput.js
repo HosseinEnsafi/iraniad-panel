@@ -4,13 +4,13 @@ function QuantityInput({
   quantityStep = 100,
   quantity,
   setQuantity,
-  className,
   maxOrder,
+  className,
 }) {
   return (
     <>
       <div
-        className={` inline-flex max-h-12 rounded-lg border-2 border-gray-500 border-opacity-50 dark:border-gray-300 ${className} `}
+        className={` inline-flex max-h-12 rounded-lg border-2 border-gray-500  border-opacity-50 dark:border-gray-300 ${className} `}
       >
         <span
           onClick={() => setQuantity((prevQty) => prevQty + quantityStep)}

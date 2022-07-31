@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Backdrop from "../../components/UI/Backdrop";
 import { UIContext } from "../../context/UIState/UIContext";
 
-import { IconContext } from "react-icons/lib";
+import { IconContext } from "../../assets/icons";
 import { Link } from "react-router-dom";
 import SidebarList from "../../components/UI/sidebar/SidebarList";
 function Sidebar(props) {
@@ -29,7 +29,7 @@ function Sidebar(props) {
     <>
       {activeMenu && (
         <Backdrop
-          onClick={() => {
+          onClose={() => {
             setActiveMenu(false);
           }}
           className={`${screenSize > 900 ? "hidden" : ""}`}

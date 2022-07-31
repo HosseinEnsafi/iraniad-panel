@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --main-color: "";
-}
 html {
   direction: rtl;
 }
 body {
-  font-family: "Vazir";
-  font-weight: 400;
+  font-family: "IRANSans";
+  font-weight: normal;
   font-style: normal;
+}
+
+@layer base {
+}
+
+@layer utilities {
+  .h-modal {
+    height: calc(100% - 2rem);
+  }
+  .sr-only {
+    clip: rect(0, 0, 0, 0);
+  }
 }
 
 @layer components {
@@ -26,13 +35,14 @@ body {
     @apply grid w-full max-w-lg px-1 sm:grid-cols-[20fr_80fr];
   }
   .login-form__input {
-    @apply rounded-md border-2 
-    border-gray-400 p-2 outline-none  
-   focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50;
+    @apply block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5  text-gray-900
+     focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700
+      dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500
+       dark:focus:ring-blue-500;
   }
 
   .login-form__btn {
-    @apply mt-2 rounded-sm  bg-cyan-400 py-2 px-3 text-white  
+    @apply mt-2 rounded-sm  bg-blue-400 py-2 px-3 text-white  
     shadow-sm disabled:cursor-not-allowed disabled:bg-slate-400 
     disabled:bg-opacity-50;
   }
@@ -47,10 +57,10 @@ body {
     @apply cursor-pointer select-none tracking-tight  text-gray-500 dark:text-gray-200;
   }
   .sidebar__item-label {
-    @apply flex w-full justify-between px-3  hover:text-red-500 dark:hover:text-red-400;
+    @apply flex w-full justify-between px-3  hover:text-blue-500 dark:hover:text-blue-400;
   }
   .sidebar__item-label--open {
-    @apply pb-2 text-red-500 dark:text-red-400;
+    @apply pb-2 text-blue-500 dark:text-blue-400;
   }
 
   .pricing__btn {
@@ -100,13 +110,7 @@ body {
   width: 50%;
   height: 14px;
   clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-  @apply bg-gray-200 dark:bg-neutral-500;
-}
-
-@layer base {
-  html {
-    @apply dark:scrollbar-thumb-black;
-  }
+  @apply bg-gray-200 dark:bg-gray-800;
 }
 
 .dir-ltr {
@@ -136,43 +140,81 @@ html::-webkit-scrollbar-thumb:hover {
 
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-Thin.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-ExtraLight.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-ExtraLight.woff2")
+    format("woff2");
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-Light.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: Vazir;
-  src: url("../../assets/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  src: url("../../assets/fonts/Vazir/Vazirmatn-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+}
+
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb_UltraLight.woff2");
+  font-weight: 200;
+  font-size: normal;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb_Light.woff2");
+  font-weight: 300;
+  font-size: normal;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb_Medium.woff2");
+  font-size: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb.woff2");
+  font-size: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb_Bold.woff2");
+  font-size: normal;
+  font-weight: bold;
+}
+@font-face {
+  font-family: IRANSans;
+  src: url("../../assets/fonts/IRANSans/woff2/IRANSansWeb_Black.woff2");
+  font-size: normal;
+  font-weight: 900;
 }

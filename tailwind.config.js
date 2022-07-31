@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// const colors = require("tailwindcss/colors");
 module.exports = {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -11,6 +12,7 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
+
     extend: {
       boxShadow: {
         sidebar: "-1px 0px 10px 1px #aaaaaa",
@@ -39,5 +41,6 @@ module.exports = {
   plugins: [
     require("tailwind-scrollbar"),
     require("prettier-plugin-tailwindcss"),
+    require("flowbite/plugin"),
   ],
 };

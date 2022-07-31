@@ -1,5 +1,5 @@
 import React from "react";
-import { BiLogOutCircle, BiUser, BiWallet } from "react-icons/bi";
+import { BiLogOutCircle, BiUser, BiWallet } from "../../../assets/icons";
 import { useDispatch, useSelector } from "react-redux";
 import userImg from "../../../assets/img/none.jpg";
 
@@ -16,7 +16,7 @@ function UserProfile() {
       <span className="hidden transition-colors duration-300 group-hover:text-red-500 md:inline">
         {user.name}
       </span>
-      <div className=" invisible absolute top-[125%] left-0 w-48 translate-y-2 divide-y-[1px] divide-gray-200 rounded-md bg-gray-100  opacity-0  shadow-md duration-200 group-hover:visible  group-hover:translate-y-0 group-hover:opacity-100 dark:divide-gray-500 dark:bg-neutral-700 ">
+      <div className=" invisible absolute top-[125%] left-0 w-48 translate-y-2 divide-y-[1px] divide-gray-200 rounded-md bg-gray-100  opacity-0  shadow-md duration-200 group-hover:visible  group-hover:translate-y-0 group-hover:opacity-100 dark:divide-gray-500 dark:bg-gray-700 ">
         <Link to={"/profile"} className="flex items-center gap-2 p-2 pb-3">
           <div className="relative h-10 w-10 ">
             <img
