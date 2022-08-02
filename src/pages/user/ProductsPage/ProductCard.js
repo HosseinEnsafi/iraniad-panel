@@ -11,7 +11,7 @@ function ProductCard({ item }) {
   const { price, quantity, setQuantity } = useCalcPrice(periods);
 
   return (
-    <article className="relative  w-full max-w-md rounded-lg  bg-gray-200  p-5 transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
+    <article className="relative  w-full max-w-md items-center rounded-lg  bg-gray-200  p-5 transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
       {label && (
         <div className="pricing__label absolute left-4 -top-[12px] flex h-20 w-[4.375rem] items-center justify-center whitespace-nowrap bg-gradient-to-tl  from-blue-400 to-blue-500  text-[15px] text-white">
           <span>{label}</span>
@@ -25,18 +25,17 @@ function ProductCard({ item }) {
         </ul>
 
         <form className="mt-auto pt-4" onSubmit={(e) => e.preventDefault()}>
-          <div className="flex gap-2">
+          <div className="grid grid-cols-[60fr_40fr] gap-2 md:grid-cols-2">
             <QuantityInput setQuantity={setQuantity} quantity={quantity} />
-            {quantity > maxOrder && (
-              <p className="self-center text-sm text-red-500  dark:text-white md:text-base">
+            {quantity < maxOrder ? (
+              <p className=" mr-2 select-none self-center ">{price}</p>
+            ) : (
+              <p className="select-none self-center text-sm text-red-500 dark:text-white md:text-base">
                 نمیتوانید بیش از {toK(maxOrder)} انتخاب کنید
               </p>
             )}
-            ‍
-            {quantity < maxOrder && (
-              <p className=" mr-2 self-center  text-sm md:text-base">{price}</p>
-            )}
           </div>
+          ‍
           <button
             disabled={quantity > maxOrder}
             onClick={() =>

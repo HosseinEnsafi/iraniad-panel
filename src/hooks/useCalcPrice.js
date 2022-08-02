@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import findPlan from "../utils/findPlan";
 
 function useCalcPrice(periods, qty) {
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("0");
   const [quantity, setQuantity] = useState(qty || 0);
   const [initial, setInitial] = useState(true);
   const currentPlan = findPlan(periods, quantity);
+
+  const formatter = new Intl.NumberFormat("fa-IR", {
+    // style: "currency",
+    currency: "IRR",
+  });
   useEffect(() => {
     if (initial && !qty) {
       setInitial(false);
@@ -17,7 +22,7 @@ function useCalcPrice(periods, qty) {
       return;
     }
 
-    setPrice(quantity * currentPlan.cost + " تومان ");
+    setPrice(formatter.format(quantity * currentPlan.cost) + " تومان");
   }, [quantity, currentPlan]);
 
   return {
