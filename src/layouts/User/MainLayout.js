@@ -11,7 +11,7 @@ function MainLayout(props) {
   }, [userTheme]);
 
   return (
-    <div className="min-h-screen bg-[#f8f8f8] text-neutral-800 dark:bg-gray-900 dark:text-slate-50 ">
+    <div className="min-h-screen bg-[#edf2f8] text-neutral-800 dark:bg-gray-900 dark:text-slate-50 ">
       {props.children}
     </div>
   );

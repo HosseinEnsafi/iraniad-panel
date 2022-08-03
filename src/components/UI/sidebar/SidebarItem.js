@@ -23,7 +23,7 @@ function SidebarItem({ item }) {
         </div>
 
         {open && (
-          <ul className=" space-y-4 bg-zinc-200 px-1 py-2 dark:bg-gray-600">
+          <ul className=" space-y-4 bg-gray-100 px-1 py-2 dark:bg-gray-600">
             {subCategories.map((item, i) => (
               <SidebarItem key={i} item={item} />
             ))}

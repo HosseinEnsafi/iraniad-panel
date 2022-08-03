@@ -1,24 +1,24 @@
 import React, { useContext, useEffect } from "react";
-import MainLayout from "./MainLayout";
-import { UIContext } from "../../context/UIState/UIContext";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import Support from "../../pages/user/Support";
-import Landing from "../../pages/user/Landing";
+import Main from "../../components/Main";
+import { UIContext } from "../../context/UIState/UIContext";
 import NotFound from "../../pages/404";
+import Profile from "../../pages/Profile";
+import AmazingSuggestion from "../../pages/user/AmazingSuggestion";
+import BeSeller from "../../pages/user/BeSeller";
 import BestSellers from "../../pages/user/BestSellers";
 import DiscountsAndSuggestion from "../../pages/user/DiscountsAndSuggestion";
-import BeSeller from "../../pages/user/BeSeller";
-import AmazingSuggestion from "../../pages/user/AmazingSuggestion";
-import Profile from "../../pages/Profile";
-import Main from "../../components/Main";
-import ProductsPage from "../../pages/user/ProductsPage";
+import Landing from "../../pages/user/Landing";
 import ProductDetail from "../../pages/user/ProductDetail";
+import ProductsPage from "../../pages/user/ProductsPage";
+import Support from "../../pages/user/Support";
 import ProtectedRoute from "../../routes/ProtectedRoute";
-import { useSelector } from "react-redux";
-function Layout({ children }) {
-  const { setUserTheme, screenSize, activeMenu } = useContext(UIContext);
+import MainLayout from "./MainLayout";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+function Layout() {
+  const { setUserTheme } = useContext(UIContext);
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     const userTheme = localStorage.getItem("userTheme");

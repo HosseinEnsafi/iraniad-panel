@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import findPlan from "../utils/findPlan";
 
 function useCalcPrice(periods, qty) {
-  const [price, setPrice] = useState("0");
+  const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState(qty || 0);
   const [initial, setInitial] = useState(true);
   const currentPlan = findPlan(periods, quantity);
@@ -18,7 +18,7 @@ function useCalcPrice(periods, qty) {
     }
 
     if (!currentPlan) {
-      setPrice("خارج از بازه");
+      quantity === 0 ? setPrice("") : setPrice("خارج از بازه");
       return;
     }
 

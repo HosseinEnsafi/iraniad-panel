@@ -47,13 +47,13 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
           تاریخ شروع : {curPlan && startDate}
         </li>
         <li className=" whitespace-nowrap text-sm sm:text-base">
-          ساعت شروع : {curPlan && startTime}
+          زمان شروع : {curPlan && startTime}
         </li>
         <li className=" whitespace-nowrap text-sm sm:text-base">
           تاریخ پایان : {curPlan && finishedDate}
         </li>
         <li className=" whitespace-nowrap text-sm sm:text-base">
-          ساعت پایان : {curPlan && finishedTime}
+          زمان پایان : {curPlan && finishedTime}
         </li>
       </ul>
       <h4 className="mt-5 text-center tracking-wide">قیمت نهایی : {price}</h4>
@@ -64,7 +64,10 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
             <label className=" text-sm sm:text-base" htmlFor="">
               شماره موبایل
             </label>
-            <input className="checkout__input" type="text" />
+            <input
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              type="text"
+            />
           </div>
         )}
 
@@ -73,7 +76,10 @@ function DetailCard({ time, date, quantity, price, curPlan }) {
             <label className=" text-sm sm:text-base" htmlFor="">
               شماره تایید
             </label>
-            <input className="checkout__input" type="text" />
+            <input
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              type="text"
+            />
           </div>
         )}
         <div className="flex w-full justify-center">

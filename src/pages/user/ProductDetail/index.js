@@ -35,7 +35,7 @@ function ProductDetail() {
       </ul>
       <form
         onSubmit={submitHandler}
-        className="mt-10 grid items-start justify-items-center gap-y-5 xs:grid-cols-2 sm:grid-cols-3"
+        className="mt-10 grid items-start justify-items-center gap-y-5 gap-x-2 sm:grid-cols-3"
       >
         <div className="  inline-flex flex-1 flex-col items-start gap-3">
           <div className="flex flex-col items-center gap-2">
@@ -67,7 +67,7 @@ function ProductDetail() {
             value={date}
             onChange={(value) => setDate(value.toDate())}
             minDate={Date.now()}
-            inputClass="data-picker__input"
+            inputClass="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             animations={[opacity()]}
           />
         </div>
@@ -81,7 +81,7 @@ function ProductDetail() {
             calendar={persian}
             locale={persian_fa}
             calendarPosition="bottom-right"
-            inputClass="data-picker__input"
+            inputClass="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value={time}
             onChange={(value) => setTime(value.toDate())}
           />

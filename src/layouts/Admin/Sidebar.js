@@ -22,7 +22,7 @@ function Sidebar(props) {
   }, []);
 
   useEffect(() => {
-    if (screenSize >= "900") setActiveMenu(true);
+    if (screenSize >= "1024") setActiveMenu(true);
   }, [screenSize, setActiveMenu]);
 
   return (
@@ -32,13 +32,13 @@ function Sidebar(props) {
           onClose={() => {
             setActiveMenu(false);
           }}
-          className={`${screenSize > 900 ? "hidden" : ""}`}
+          className={`${screenSize > 1024 ? "hidden" : ""}`}
         />
       )}
       <aside
         className={`fixed top-0 h-screen w-60   bg-gray-50   ${
-          screenSize < 900 ? "z-10 duration-300" : ""
-        } dark:bg-[#3d3d3d]   ${screenSize > 900 ? "mt-12" : ""} ${
+          screenSize < 1024 ? "z-10 duration-300" : ""
+        } dark:bg-[#3d3d3d]   ${screenSize > 1024 ? "mt-12" : ""} ${
           activeMenu ? "translate-x-0" : "translate-x-60"
         }`}
       >
@@ -47,7 +47,7 @@ function Sidebar(props) {
         <Link
           to={"/"}
           className={`block select-none items-center  justify-center  py-2 pr-8 ${
-            screenSize > 900
+            screenSize > 1024
               ? "hidden"
               : " border-b-[0.5px] border-b-gray-400 border-opacity-20"
           }`}
@@ -56,7 +56,7 @@ function Sidebar(props) {
         </Link>
 
         {/* <!--===== MAIN =====--> */}
-        <div className={` ${screenSize > 900 ? "pt-3" : "pt-4"}`}>
+        <div className={` ${screenSize > 1024 ? "pt-3" : "pt-4"}`}>
           <IconContext.Provider value={{ size: "22px" }}>
             <SidebarList items={sidebarData} />
           </IconContext.Provider>

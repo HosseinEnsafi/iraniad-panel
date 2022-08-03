@@ -6,7 +6,7 @@ function Main(props) {
   return (
     <main
       className={`   container mx-auto px-3 pt-20
-        ${screenSize > 900 && activeMenu ? "pr-60" : ""}`}
+        ${screenSize > 1024 && activeMenu ? "pr-60" : ""}`}
     >
       {props.children}
     </main>

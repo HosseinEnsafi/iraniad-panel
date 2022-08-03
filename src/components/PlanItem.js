@@ -7,7 +7,7 @@ function PlanItem({ plan, quantity }) {
   return (
     <li
       className={`
-  flex items-baseline gap-3 
+  flex items-baseline  gap-3 
   ${
     isInRange(plan.start, plan.end, quantity) &&
     " text-green-600 dark:text-green-400"
@@ -15,7 +15,7 @@ function PlanItem({ plan, quantity }) {
     >
       <p className="flex items-center gap-3">
         {!isFirstPlan(plan.start)
-          ? `            از ${toK(plan.start)} تا ${toK(plan.end)} هر عدد ${
+          ? ` از ${toK(plan.start)} تا ${toK(plan.end)} هر عدد ${
               plan.cost
             } تومان
 `
