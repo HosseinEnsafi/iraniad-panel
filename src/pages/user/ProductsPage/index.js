@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import axios from "../../../api/axios";
 
@@ -26,20 +27,25 @@ function ProductsPage() {
         setLoading(false);
       });
   }, [search]);
+  console.log(productsData);
+  if (loading)
+    return (
+      <div className="products__list mt-28">
+        {[1, 2, 3].map((_, i) => (
+          <ProductCardSkeleton key={i} />
+        ))}
+      </div>
+    );
 
-  useEffect(() => {
-    console.log(productsData);
-  }, [productsData]);
+  if (productsData.length === 0)
+    return (
+      <div className="flex h-[calc(100vh-200px)] flex-col items-center justify-center gap-3">
+        <h1 className=" text-2xl md:text-4xl">محصول مورد نظر یافت نشد</h1>
+      </div>
+    );
 
   return (
     <>
-      {loading && (
-        <div className="products__list mt-28">
-          {[1, 2, 3].map((_, i) => (
-            <ProductCardSkeleton key={i} />
-          ))}
-        </div>
-      )}
       {productsData.map((data) => (
         <section className="py-10" key={data.id}>
           <h1 className="mb-10 text-center text-2xl md:mb-14 md:text-3xl ">

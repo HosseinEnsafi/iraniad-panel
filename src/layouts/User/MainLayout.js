@@ -4,10 +4,11 @@ import { UIContext } from "../../context/UIState/UIContext";
 
 function MainLayout(props) {
   const { userTheme } = useContext(UIContext);
-  const body = document.querySelector("body");
 
   useEffect(() => {
-    body.classList.toggle("dark", userTheme === "Dark");
+    document
+      .querySelector("html")
+      .classList.toggle("dark", userTheme === "Dark");
   }, [userTheme]);
 
   return (

@@ -6,10 +6,9 @@ import useCalcPrice from "../../../hooks/useCalcPrice";
 import toK from "../../../utils/toK";
 
 function ProductCard({ item }) {
-  const { periods, maxOrder, label, id } = item;
+  const { periods, maxOrder, label, id, properties } = item;
   const navigate = useNavigate();
   const { price, quantity, setQuantity } = useCalcPrice(periods);
-  console.log(price);
   return (
     <article className="relative  w-full max-w-md items-center rounded-lg  bg-white  p-5 transition-shadow hover:shadow-lg dark:border-gray-700 dark:bg-gray-800">
       {label && (
@@ -42,7 +41,7 @@ function ProductCard({ item }) {
             disabled={quantity > maxOrder}
             onClick={() =>
               navigate(`/products/${id}`, {
-                state: { item, quantity },
+                state: { item, qty: quantity, properties },
               })
             }
             className="pricing__btn"

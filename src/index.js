@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import ProductProvider from "./context/productState/ProductProvider";
-document.title = "پنل مدیریت";
+
 
 ReactDOM.render(
   <BrowserRouter>

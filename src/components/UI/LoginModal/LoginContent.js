@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UIContext } from "../../../context/UIState/UIContext";
 import { clearError, closeLogin, loginUser } from "../../../redux";
 import CloseFromBtn from "../CloseFromBtn";
+import { BiX } from "../../../assets/icons";
 
 function LoginContent(props) {
   const dispatch = useDispatch();
@@ -27,7 +28,14 @@ function LoginContent(props) {
 
   return (
     <div className={`${props.active ? "block" : "hidden"} relative`}>
-      <CloseFromBtn onClose={() => dispatch(closeLogin())} />
+      <button
+        onClick={() => dispatch(closeLogin())}
+        className={`inline-flex items-center rounded-lg  bg-transparent
+      p-1 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900
+       dark:hover:bg-gray-500 dark:hover:text-white `}
+      >
+        <BiX className="h-[26px] w-[26px]" />
+      </button>
 
       <h2 className="text-center text-lg">عضویت</h2>
 
@@ -37,14 +45,14 @@ function LoginContent(props) {
         </div>
       )}
       <form
-        className="login-form"
+        className="mt-8 flex flex-col items-start gap-5"
         onSubmit={(e) => {
           e.preventDefault();
           if (loading) return;
           loginUserHandler();
         }}
       >
-        <div className="login-form__div">
+        <div className="grid w-full  px-1 sm:grid-cols-[20fr_80fr]">
           <label className="self-center">شماره تلفن:</label>
           <input
             value={userPhone}
@@ -56,7 +64,7 @@ function LoginContent(props) {
             ref={phoneRef}
           />
         </div>
-        <div className="login-form__div">
+        <div className="grid w-full  px-1 sm:grid-cols-[20fr_80fr]">
           <label className=" self-center">رمز کاربری:</label>
           <input
             value={password}

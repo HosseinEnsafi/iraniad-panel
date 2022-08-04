@@ -5,7 +5,7 @@ function MainLayout(props) {
   const { adminTheme } = useContext(UIContext);
   //prettier-ignore
   useEffect(() => {
-    document.querySelector("body").classList.toggle("dark", adminTheme === "Dark");
+    document.querySelector("html").classList.toggle("dark", adminTheme === "Dark");
   }, [adminTheme]);
 
   return (

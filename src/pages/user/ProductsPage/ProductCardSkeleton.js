@@ -7,8 +7,8 @@ function ProductCardSkeleton() {
 
   return (
     <SkeletonTheme
-      baseColor={`${userTheme === "Light" ? "#ebebeb" : "#333"}`}
-      highlightColor={`${userTheme === "Light" ? "#f5f5f5" : "#444"}`}
+      baseColor={`${userTheme === "Light" ? "#bdbdbd" : "#313236"}`}
+      highlightColor={`${userTheme === "Light" ? "#999999" : "#50535a"}`}
     >
       <div className="flex w-full flex-col gap-4 px-10 md:px-4">
         <div className="mt-12">

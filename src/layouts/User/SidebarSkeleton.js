@@ -7,8 +7,8 @@ function SidebarSkeleton() {
   const { userTheme } = useContext(UIContext);
   return (
     <SkeletonTheme
-      baseColor={`${userTheme === "Light" ? "#ebebeb" : "#333"}`}
-      highlightColor={`${userTheme === "Light" ? "#f5f5f5" : "#444"}`}
+    baseColor={`${userTheme === "Light" ? "#bdbdbd" : "#313236"}`}
+    highlightColor={`${userTheme === "Light" ? "#999999" : "#50535a"}`}
     >
       <Skeleton
         count={10}

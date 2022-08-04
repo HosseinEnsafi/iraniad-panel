@@ -1,4 +1,6 @@
-import React, { useContext, useState } from "react";
+import axios from "axios";
+import React, { useContext, useState, useReducer } from "react";
+import { useEffect } from "react";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import opacity from "react-element-popper/animations/opacity";
@@ -13,22 +15,87 @@ import { UIContext } from "../../../context/UIState/UIContext";
 import useCalcPrice from "../../../hooks/useCalcPrice";
 import findPlan from "../../../utils/findPlan";
 import toK from "../../../utils/toK";
-import DetailCard from "./DetailCard";
+import OrderCard from "./OrderCard";
+
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case "GET_FROM_REQUEST":
+      return state;
+    case "GET_FROM_NAVIGATE":
+      return {
+        ...state,
+        item: payload.item,
+        qty: payload.qty,
+        loading: false,
+        properties: payload.properties,
+      };
+    default:
+      return state;
+  }
+};
+
+const productState = {
+  item: {
+    periods: [],
+    label: "",
+    product_label: "",
+    maxOrder: 0,
+  },
+  qty: 0,
+  properties: [],
+  loading: true,
+};
+
 function ProductDetail() {
+  const [state, dispatch] = useReducer(reducer, productState);
   const params = useParams();
   const location = useLocation();
-  const { item, quantity: qty } = location.state;
-  const { productId: id } = params;
-  const { label, product_label, maxOrder, periods } = item;
-  const { price, quantity, setQuantity } = useCalcPrice(periods, qty);
+  const { productId } = params;
   const { screenSize, userTheme } = useContext(UIContext);
-  const [date, setDate] = useState(Date.now());
-  const [time, setTime] = useState(Date.now());
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   const submitHandler = () => {};
+  const {
+    item: { periods, label, product_label, maxOrder },
+    qty,
+    properties,
+    loading,
+  } = state;
+  const { price, quantity, setQuantity } = useCalcPrice(
+    periods,
+    location.state?.qty || qty
+  );
   const curPlan = findPlan(periods, quantity);
+
+  useEffect(() => {
+    if (location.state) {
+      dispatch({
+        type: "GET_FROM_NAVIGATE",
+        payload: {
+          qty: location.state.qty,
+          item: location.state.item,
+          properties: location.state.properties,
+        },
+      });
+    } else {
+      axios.get(`services/${productId}`).then((res) => console.log(res.data));
+    }
+  }, []);
+
+  const submitOrder = () => {
+    axios.post("orders", {
+      count: quantity,
+      order_time: time.getHours(),
+      order_date: date.toISOString(),
+      properties: [],
+    });
+  };
+
+  if (loading) return <h1>Loading...</h1>;
+
   return (
     <div className="pb-4">
-      <ul className=" leading-10">
+      <ul className="flex cursor-pointer flex-wrap justify-center gap-x-8 rounded-lg border border-gray-200 bg-white leading-10 shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800  dark:hover:bg-gray-700">
         {periods.map((plan, i) => [
           <PlanItem plan={plan} key={i} quantity={quantity} />,
         ])}
@@ -44,7 +111,7 @@ function ProductDetail() {
           </div>
           {quantity > maxOrder && (
             <p className=" text-sm text-red-700  dark:text-white md:text-base">
-              حداکثر تعداد {toK(maxOrder)} میباشد
+              ww حداکثر تعداد {toK(maxOrder)} میباشد
             </p>
           )}
         </div>
@@ -89,7 +156,10 @@ function ProductDetail() {
       </form>
 
       <div className=" mt-16 grid justify-items-center gap-4 sm:grid-cols-2 ">
-        <DetailCard
+        {properties.map((property, i) => (
+          <p key={i}>Hello</p>
+        ))}
+        <OrderCard
           quantity={quantity}
           price={price}
           time={time}
