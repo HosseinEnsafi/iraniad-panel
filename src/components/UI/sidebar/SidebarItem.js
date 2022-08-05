@@ -15,7 +15,6 @@ function SidebarItem({ item }) {
           }`}
         >
           <div className="flex gap-4">
-            {/* <span className="self-center">{icon}</span> */}
             <p>{name}</p>
           </div>
 

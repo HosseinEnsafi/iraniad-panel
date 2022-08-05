@@ -13,7 +13,9 @@ import {
   BiX,
   BiWallet,
   BiTachometer,
-  BiPlus,BiMinus
+  BiPlus,
+  BiMinus,
+  BiInfoCircle,
 } from "react-icons/bi";
 import { TbDiscount2 } from "react-icons/tb";
 import { AiOutlineFire } from "react-icons/ai";
@@ -44,5 +46,7 @@ export {
   IoTicketOutline,
   IconContext,
   BiGridAlt,
-  BiPlus,BiMinus
+  BiPlus,
+  BiMinus,
+  BiInfoCircle,
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useMemo } from "react";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
@@ -8,7 +9,8 @@ import { useSelector } from "react-redux";
 function OrderCard({ time, date, quantity, price, curPlan }) {
   const { user } = useSelector((state) => state.auth);
   const deliveredTime = +curPlan?.time;
-
+  const [phone, setPhone] = useState("");
+  const [confirmCode, setConfirmCode] = useState("");
   const startDate = useMemo(() => {
     return new DateObject({
       date: new Date(date).getTime(),
@@ -42,7 +44,7 @@ function OrderCard({ time, date, quantity, price, curPlan }) {
   }, [deliveredTime, time]);
 
   return (
-    <div className=" w-full rounded-lg border bg-white px-2 py-3 text-gray-700  dark:border-gray-400 dark:bg-gray-800  dark:text-gray-300 lg:max-w-[420px] ">
+    <div className=" w-full rounded-lg border bg-white px-2 py-3 text-gray-700  dark:border-gray-400 dark:bg-gray-800  dark:text-gray-300 lg:max-w-[450px] ">
       <ul className="grid grid-cols-2 justify-items-center gap-x-2 gap-y-4">
         <li className="whitespace-nowrap text-sm   md:text-base">
           قیمت واحد : {curPlan && curPlan.cost} تومان
@@ -74,6 +76,8 @@ function OrderCard({ time, date, quantity, price, curPlan }) {
               شماره موبایل
             </label>
             <input
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               type="text"
             />
@@ -86,13 +90,19 @@ function OrderCard({ time, date, quantity, price, curPlan }) {
               شماره تایید
             </label>
             <input
+              value={confirmCode}
+              onChange={(e) => setConfirmCode(e.target.value)}
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               type="text"
             />
           </div>
         )}
         <div className="flex w-full justify-center">
-          <button type="submit" className="pricing__btn mt-2 w-24">
+          <button
+            type="submit"
+            disabled={!price}
+            className="pricing__btn mt-2 w-24 "
+          >
             پرداخت
           </button>
         </div>

@@ -27,7 +27,7 @@ function ProductsPage() {
         setLoading(false);
       });
   }, [search]);
-  console.log(productsData);
+  console.log(productsData)
   if (loading)
     return (
       <div className="products__list mt-28">
